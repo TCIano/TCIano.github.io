@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Vue 组件通信"
+subtitle: '各组件之间的通信方法'
 date:   2022-08-11 20:15:51 +0800
 tags: 组件通信
 categories: Vue
