@@ -2,6 +2,7 @@
 layout: post
 title:  "Vue 组件通信"
 date:   2022-08-11 20:15:51 +0800
+tags: 组件通信
 categories: Vue
 ---
 

@@ -6,7 +6,7 @@
 
 ### Preview
 
-#### [在线预览 Live Demo →](http://liaokeyu.com/)
+#### [在线预览 Live Demo →](tciano.github.io/)
 
 ![](screenshot/jekyll-theme-h2o-realhome.jpg)
 
@@ -125,7 +125,7 @@ You can easily get started by modifying _config.yml
 
 你可以通用修改 `_config.yml` 文件来轻松的开始搭建自己的博客
 
-```
+<!-- ```
 # Site settings
 title: '廖柯宇的独立博客' # 你的博客网站标题
 description: '很高兴能在这里与你分享我对技术和生活的思考。' # 站点描述
@@ -136,7 +136,7 @@ baseurl: ''
 # Build settings
 paginate: 6 # 一页放几篇文章
 paginate_path: 'page:num'
-```
+``` -->
 
 其实大部分参数已经默认配置好了，你只需要通过文档了解它们，然后根据自己的需求去`_config.yml`文件里修改即可。
 
