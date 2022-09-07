@@ -37,13 +37,13 @@ nightMode: true
 
 # Comments 评论功能
 comments:
-  disqus: true
-  disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+  # disqus: true
+  # disqus_url: 'https://liaokeyu.disqus.com/embed.js'
 
   gitalk: true
   gitalk_clientID: 'd5007cc3d69758451e25'
   gitalk_Secret: 'd2599455e124cff5148dadf21ff8b8c65a7653ad'
-  gitalk_repo: 'TCIano.github.io'
+  gitalk_repo: 'TCIano/Blog_gittalk'
   gitalk_owner: 'TCIano'
   gitalk_admin: 'TCIano'
   distractionFreeMode: true
