@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
 {% include post-head.html %}
 
 <body>
@@ -101,7 +98,7 @@
       </div>
       {% endif %}
     </section>
-    {% if site.comments.gitalk %}
+    {% if site.comments.disqus %}
     <section class="post-footer-item comment">
         <div id="disqus_thread"></div>
     </section>
@@ -109,7 +106,7 @@
   </section>
 
   {% include footer.html %}
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
   <script src="{{ "/assets/js/social-share.min.js" | relative_url }}"></script>
   <script>
     socialShare('.social-share', {
@@ -143,22 +140,6 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
-  {% endif %}
-
-  {% if site.comments.gitalk %}
-	<script>
-		var gitalk = new Gitalk({
-			  clientID: '{{ site.comments.gitalk_clientID }}',
-			  clientSecret: '{{ site.comments.gitalk_Secret }}',
-			  repo: '{{ site.comments.gitalk_repo }}',
-			  owner: '{{ site.comments.gitalk_owner }}',
-			  admin: '{{ site.comments.gitalk_admin }}',
-			  id: location.pathname,      // Ensure uniqueness and length less than 50{{ page.title }}
-			  distractionFreeMode: '{{ site.comments.distractionFreeMode }}'  // Facebook-like distraction free mode
-			})
-
-			gitalk.render('disqus_thread')
-	</script>
   {% endif %}
 
   <script src="{{ "/assets/js/prism.js" | relative_url }}"></script>
