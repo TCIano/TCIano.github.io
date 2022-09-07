@@ -40,6 +40,14 @@ comments:
   disqus: true
   disqus_url: 'https://liaokeyu.disqus.com/embed.js'
 
+  gitalk: true
+  gitalk_clientID: 'd5007cc3d69758451e25'
+  gitalk_Secret: 'd2599455e124cff5148dadf21ff8b8c65a7653ad'
+  gitalk_repo: 'TCIano.github.io'
+  gitalk_owner: 'TCIano'
+  gitalk_admin: 'TCIano'
+  distractionFreeMode: true
+
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
 
