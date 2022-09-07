@@ -1,0 +1,473 @@
+I"+e<h1 id="vue">💡VUE</h1>
+<h3 id="mainjs-的运行过程">main.js 的运行过程</h3>
+
+<ol>
+  <li>引入Vue对象（相当于引入vue.js）</li>
+  <li>引入App.vue 对象</li>
+  <li>实例化vue</li>
+  <li>渲染App页面</li>
+  <li>把页面渲染到 index.html 里，手动挂载到id为app的dom中。</li>
+</ol>
+
+<h3 id="data-为什么是一个函数">data 为什么是一个函数</h3>
+
+<ul>
+  <li>如果data是一个对象，那么如果组件多次使用，实际上是同用一个数据。</li>
+  <li>源码中是通过<code class="language-plaintext highlighter-rouge">initData</code> 返回数据，那么每个组件使用的数据是独立的，都有自己的作用域。</li>
+</ul>
+
+<h3 id="mvvm模式">MVVM模式</h3>
+
+<h3 id="vue语法中的命令">vue语法中的命令</h3>
+
+<ol>
+  <li>插值表达式：{ { } }</li>
+</ol>
+
+<p>在 dom 中直接插入 vue 数据变量，数据变量在 js 中 data 函数里面声明</p>
+
+<ol>
+  <li>给标签属性设置变量的值：v-bind / :</li>
+</ol>
+
+<ul>
+  <li>v-bind : 属性名 = “变量”</li>
+</ul>
+
+<ol>
+  <li>给标签绑定事件 ： v-on / @click</li>
+</ol>
+
+<ul>
+  <li>v-on :  事件名 = “执行的代码”</li>
+  <li>v-on：事件名 = “函数名”</li>
+  <li>v-on：事件名 = “函数名（实参）”</li>
+</ul>
+
+<p>事件中的 this 指向 exports default { } 中的变量</p>
+
+<ol>
+  <li>
+    <p>事件修饰符：v-on : 事件名.修饰符 = ‘’函数‘’</p>
+
+    <ul>
+      <li>.prevent 阻止默认行为</li>
+      <li>.stop 阻止冒泡</li>
+      <li>
+        <p>.once 程序运行期间，只触发一次事件函数</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> v-on : keyup.enter = ''函数''  监测回车
+</code></pre></div>        </div>
+      </li>
+      <li>v-on ：keyup.esc = ‘’函数‘’ 监测返回</li>
+    </ul>
+  </li>
+  <li>
+    <p>表单value和vue变量的双向绑定：v-model : ‘‘vue变量’’</p>
+  </li>
+</ol>
+
+<ul>
+  <li>下拉菜单 ，v-model绑定在select上</li>
+  <li>复选框，v-model</li>
+  <li>（内容为非数组）：关联的是复选框的checked属性</li>
+  <li>（内容为数组）：关联的是复选框的value值</li>
+</ul>
+
+<ol>
+  <li>v-model.修饰符 = “”</li>
+</ol>
+
+<p>作用：实现数据的双向绑定，以及组件之间的通信
+原理：input事件和 ：value的语法糖</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">v-model=</span><span class="s">"val"</span><span class="nt">&gt;</span>
+//相当于
+<span class="nt">&lt;input</span> <span class="na">:value=</span><span class="s">"val"</span> <span class="err">@</span><span class="na">input = </span><span class="s">"val = $event.target.value&gt;
+</span></code></pre></div></div>
+<p>场景：</p>
+
+<ol>
+  <li>在表单中使用。</li>
+  <li>组件通信：当父组件传递给子组件，且子组件要修改数据传递给父组件时，用 v-model 进行简化。</li>
+</ol>
+
+<ul>
+  <li>缺点：一个组件只能使用一次v-model。</li>
+</ul>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;child</span> <span class="na">v-model=</span><span class="s">"color"</span><span class="nt">&gt;</span> //传递color给子组件
+  //相当于
+ <span class="nt">&lt;child</span> <span class="na">:value = </span><span class="s">"color"</span> <span class="err">@</span><span class="na">input = </span><span class="s">"color = $event"</span><span class="nt">&gt;</span>
+  
+</code></pre></div></div>
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="err">@</span><span class="na">click = </span><span class="s">"$emit('input','数据')"</span><span class="nt">&gt;</span>
+ 
+props:['value']
+  
+ //也可以自定义v-model 的属性名和事件名
+ model:{
+   prop:'自定义属性名'，
+  event:'自定义事件名'
+ }
+</code></pre></div></div>
+<ul>
+  <li>为了解决一个组件只能使用一次v-model的缺点，引入了.sync修饰符</li>
+</ul>
+
+<ol>
+  <li>sync 修饰符</li>
+</ol>
+
+<ul>
+  <li>传递单个数据（.sync=“数据 ”）</li>
+</ul>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;child</span> <span class="na">:color.sync = </span><span class="s">"color"</span><span class="nt">&gt;</span>
+  
+  //相当于
+ <span class="nt">&lt;child</span> <span class="na">:属性名=</span><span class="s">“数据”</span> <span class="err">@</span><span class="na">update</span><span class="err">：</span><span class="na">属性名 =  </span><span class="s">“数据</span> <span class="err">=</span> <span class="err">$</span><span class="na">event</span><span class="err">”</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>传递一个对象（v-bind.sync=”对象”）</li>
+  <li>可以将对象的每个属性打散开，分别生成对应的</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//父组件
+@update:属性名1 = “对象.属性1 = 新值”
+@update:属性名2 = “对象.属性2 = 新值”
+
+//子组件
+$emit('update:属性名1',新值);
+$emit('update:属性名2',新值);
+</code></pre></div></div>
+
+<ol>
+  <li>v-if 和 v-for 为什么避免同时使用</li>
+</ol>
+
+<ul>
+  <li>vue2中：v-for的优先级高于v-if的优先级，会先通过循环创建虚拟DOM，再通过v-if进行移除
+    <ul>
+      <li>解决：
+        <ul>
+          <li>v-if 写到外层标签</li>
+          <li>先通过计算属性将数据计算好</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>vue3中：v-if优先级高</li>
+</ul>
+
+<h3 id="computed-和-watch的区别">computed 和 watch的区别</h3>
+
+<ul>
+  <li>computed：
+    <ul>
+      <li>计算属性，通过其他变量得来的的另一个属性。</li>
+      <li>只在依赖发生改变时候才会重新求值，需要  return。</li>
+      <li>只会计算一次，只要数据不变，后续数据使用的是缓存。</li>
+      <li>不能处理异步，因为如果是异步操作 return 是没有意义的。</li>
+    </ul>
+  </li>
+  <li>watch：
+    <ul>
+      <li>监听一个特定的值，值发生变化时执行特定逻辑。</li>
+      <li>可以监听 props、data、computed、$route</li>
+      <li>当监听的数据发生变化，对应函数会重新执行。</li>
+      <li>如果监听一个对象需要开启深度监听，<code class="language-plaintext highlighter-rouge">deep:true</code>。</li>
+      <li>可以处理异步。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="vuex的同步异步流程">🔺vuex的同步异步流程</h3>
+
+<ol>
+  <li>同步流程</li>
+</ol>
+
+<ul>
+  <li>通过 $store 的 commit 触发 mutations 中的事件 ，修改 state 中的 数据。</li>
+</ul>
+
+<ol>
+  <li>异步流程</li>
+</ol>
+
+<ul>
+  <li>通过 $store 的 dispatch 触发 actions 中的事件，再用 context中的commit 提交给 mutations 从而修改 state 中的数据。</li>
+</ul>
+
+<h3 id="简单谈谈vuex">🔺简单谈谈vuex</h3>
+
+<ol>
+  <li>vuex就是基于vue的一个状态管理工具</li>
+  <li>它主要用于实现数据的共享，同时数据也是响应式的，因此它就方便了各个组件之间共享数据的操作，也有利于数据的维护的管理。</li>
+  <li>它有五个主要的状态：
+    <ul>
+      <li>state 是用来存储和定义用来共享的数据的属性，可以用$store 或者是 辅助函数来拿到state的数据，因为辅助函数本质上会返回一个对象，可以把vuex中的数据映射过来，在使用的时候必须解构出来。</li>
+      <li>mutations 是 用来修改state 数据的唯一来源，但是也可以直接修改state 中的数据，但是不建议，因为一旦数据出现错误会造成state中的数据混乱，它一般是用来处理同步流程，通过commit 提交给mutations 从而修改state 中的数据，如果用它处理异步流程，那么可能造成调试工具的不准确。</li>
+      <li>actions 主要用来处理异步流程，通过dispatch 传递给 actions 在调用 mutations 来修改数据，一般在工作中，为了避免操作的繁琐，基本都把同步异步流程都放到actions中进行处理，而把数据的修改提交到mutations中。</li>
+      <li>getters 主要把state中的数据新建派生处理，即根据state中的数据生成另一种数据。</li>
+      <li>modules 主要是把vuex数据模块化，方便管理和维护，每个模块里都有对应模块的 state/mutations/actions/getters 属性，如果没有开启命名空间，模块中的 mutations/actions中的方法和全局中的并无差别，开启命名空间之后，使用各自模块的方法和数据都必须加上模块名，或者是根据createNamespacedHelper生成对应命名空间的辅助函数，它能拿到当前命名空间的所有辅助函数，从而实现对当前命名空间数据或方法的使用。</li>
+    </ul>
+  </li>
+  <li>vuex的缺点就是 他其中的数据不支持持久化操作，当然我们可以通过添加本地存储的方式来实现手动持久化，或者是通过插件vuex-persistedstate 来实现自动的数据持久化操作，其中可以对指定模块进行数据持久化。</li>
+  <li>在日常的业务中，一般的用户信息以及用户唯一标识token都放到vuex中进行存储，以及一些多组件之间需要频繁传递的参数一般也放到vuex中进行存储。</li>
+</ol>
+
+<h3 id="v-if-和--v-show-的区别">v-if 和  v-show 的区别</h3>
+<ol>
+  <li>
+    <p>v-if / v-show 都会控制元素的显示和隐藏</p>
+  </li>
+  <li>
+    <p>v-show 相当于给标签添加了样式 display：none ，</p>
+
+    <p>优点：不会频繁创建或者删除 dom。</p>
+
+    <p>缺点：首次渲染，如果为false，也会创建元素依旧在，更高的初始渲染开销。</p>
+
+    <p>场景：如果需要频繁的切换，可以用v-show。</p>
+  </li>
+  <li>
+    <p>v-if 是直接从 DOM 中移除或者添加元素。</p>
+
+    <p>优点：懒渲染，如果有此渲染是false ，那么久不会创建元素，如果是组件，可以重新触发生命周期。
+缺点：会频繁的删除和创建dom元素，增加了性能负担，v-if有更高的切换开销
+应用场景：如果元素很少改变，或者组件需要重新触发生命周期，或者首次元素为隐藏。</p>
+  </li>
+</ol>
+
+<h3 id="route--和-router-的区别">route  和 router 的区别</h3>
+
+<ol>
+  <li>route 是当前路由信息，可以获取到当前路由地址（path）参数（params，query）等等。$ route是一个跳转的路由对象（路由信息对象），每一个路由都会有一个$route对象，是一个局部的对象。</li>
+  <li>router 是全局路由（VueRouter）实例对象，可以通过 router 进行路由的跳转后退等等。他包含了所有的路由，包括路由的跳转方法，钩子函数，也包含一些子对象（例如history）</li>
+</ol>
+
+<h3 id="vueuseinstall23原理">Vue.use（install（）{}，2，3）原理</h3>
+<ul>
+  <li>作用：用来全局注册组件。</li>
+  <li>里面的参数1可以有两种形式</li>
+  <li>如果传入的参数是一个对象的话，那么这个对象必须提供一个install（）方法，其方法的参数就是Vue。</li>
+  <li>如果传入的参数是一个回调函数的话，那么这个函数的参数就是Vue对象</li>
+  <li>如果我们想要全局注册组件，其实用到的是ues（）方法里的install里面的Vue.component注册全局组件或者给Vue.prototype手动添加方法的逻辑。</li>
+  <li>剩余参数，就作为了install方法的剩余的参数。</li>
+</ul>
+
+<h3 id="请求优化">请求优化</h3>
+<ul>
+  <li>通过定义一个环境变量（不同环境下定义一个同名数据，在不同环境下值不同）来实现工程化的切换生成/测试/开发所用到的基准地址。</li>
+</ul>
+
+<h3 id="vue封装组件的思想">vue封装组件的思想</h3>
+<ul>
+  <li>准备结构:结构考虑复用灵活,一般使用插槽允许自定义</li>
+  <li>组件的样式:考虑样式支持自定义,一般使用属性传值(有可能是样式,通过类名)</li>
+  <li>组件的数据: 通过数据传递</li>
+  <li>逻辑,事件,:例如弹框组件,点击遮罩弹框关闭,用户使用组件的时候,也需要监听到点击遮罩的行为,用户想进行自定义的逻辑,</li>
+</ul>
+
+<h3 id="nexttick">$nextTick</h3>
+<p>作用：用来数据更新后，开始触发，更新视图。</p>
+
+<ul>
+  <li>如数数据更新之后，我们是立马拿不到，因为dom的更新是异步的，可以用$nextTick 获取最新更新后的视图。</li>
+  <li>因为本质上它是一个可宏可微的任务，在不传回调的时候默认使用的promise.then是微任务，在传回调的时候默认内部是定时器，是宏任务。</li>
+</ul>
+
+<p>场景：一般的话，用可以用在，想要在create（）中拿到dom的时候。</p>
+
+<h3 id="vue生命周期">vue生命周期</h3>
+
+<ol>
+  <li>创建阶段
+    <ul>
+      <li>beforeCreate() : vue实例开始初始化，但是拿不到实例里面的方法和数据，此时方法和数据并没有添加到实例中。</li>
+      <li>created() : vue实例初始化完成，可以访问到 实例的数据和方法。</li>
+    </ul>
+  </li>
+  <li>挂载阶段
+    <ul>
+      <li>beforeMount（）：dom 未挂载，不可以操作dom</li>
+      <li>mounted（）：dom 已挂载，此时可以操作dom</li>
+    </ul>
+  </li>
+  <li>更新阶段
+    <ul>
+      <li>beforeUpdate（）：数据更新，但是视图没有更新，此时是不同步的。</li>
+      <li>updateed（）：数据更新，视图也更新，二者同步。此时虚拟dom变为新的dom。</li>
+    </ul>
+  </li>
+  <li>销毁阶段
+    <ul>
+      <li>beforeDestory（）：实例开始销毁，清除挂载在 window 上的行为定时器或者是事件。vue实例上绑定的东西会解绑，解除事件监听。</li>
+      <li>destory（）：实例销毁后，对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁</li>
+    </ul>
+  </li>
+  <li>父子生命周期
+    <ul>
+      <li>创建阶段和挂载阶段
+        <ul>
+          <li>父beforeCreate（）— 父created（）— 子beforeCreated（）— 子created（）— 子beforeMount（）— 子mounted（）—父beforeMount（）— 父mounted（）</li>
+        </ul>
+      </li>
+      <li>更新阶段
+        <ul>
+          <li>如果父级更新的数据不涉及子组件：父beforeUpdate（）—父update（）</li>
+          <li>如果父级更新的数据涉及子组件：父beforeUpdate（）—子beforeUpdate（）—子update（）–父update（）</li>
+        </ul>
+      </li>
+      <li>销毁阶段
+        <ul>
+          <li>父beforeDestory（）—子beforeDestory（）—子destoryed（）–父destoryed（）</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="虚拟dom">虚拟DOM</h3>
+
+<ol>
+  <li>本质：是一个js对象，用来描述真的DOM。</li>
+  <li>优点：可以进行高效更新，跨平台</li>
+  <li>实现高效更新：
+    <ol>
+      <li>初始化：根据数据和模板生成一个虚拟dom树。</li>
+      <li>当数据发生变化：根据新的数据生成一个新的虚拟dom树。</li>
+      <li>对比两个新旧虚拟dom：diff算法
+        <ul>
+          <li>采用同级比较，深度优先的方法，进行双指针算法处理，新旧dom都分别有两个指向开始和结束的指针。</li>
+          <li>对比之后，元素不同：对元素删除重建</li>
+          <li>元素相同，属性不同：元素复用，属性更新</li>
+          <li>用 v-for 遍历数据：
+            <ol>
+              <li>无 key ：观察数据的变化是否影响到顺序
+                <ul>
+                  <li>顺序发生变化：那么就会影响到性能，不会对元素进行复用</li>
+                  <li>顺序没发生变化：复用相同元素，更新不同元素</li>
+                </ul>
+              </li>
+              <li>有 key ：会根据 key 值来判断元素是否更新，如果可以找到相同的 key 则会复用，如果找不到相同的 key 值，那么就只更新这个 key 值的元素。</li>
+              <li>key 不推荐使用 index ：一旦在对元素进行逆序的删除或者添加的话，那么所有元素的索引就会改变，会产生没必要的 dom 更新或者是错误的更新，影响性能 。</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="mixins">Mixins</h2>
+
+<h3 id="1-概念">1. 概念</h3>
+
+<ul>
+  <li>将组件中的逻辑功能进行复用，<strong>复用部分</strong>可以提取到一个 js 文件中，然后在需要使用复用逻辑的地方通过 mixins 选项将该文件中暴露的对象进行混入即可。</li>
+</ul>
+
+<h3 id="2-优先级">2. 优先级</h3>
+
+<ul>
+  <li>生命周期：组件和混入的都会调用（混入的优先）</li>
+  <li>data数据：进行合并，若有冲突，以组件的为主，mixins中的冲突数据会被覆盖。</li>
+  <li>methods、components和directives，将被合并为同一个对象，两个对象键名冲突时，以组件对象的键值为主。</li>
+</ul>
+
+<h2 id="数据响应式">❗数据响应式</h2>
+
+<h3 id="1-概念-1">1. 概念</h3>
+
+<ul>
+  <li>数据发生变化，使用数据的地方就会进行同步更新。</li>
+</ul>
+
+<h3 id="2-响应式核心">2. 响应式核心</h3>
+
+<p>​	<code class="language-plaintext highlighter-rouge">Object.defineProperty</code>：可对对象进行属性定义内部有：</p>
+
+<ul>
+  <li>set（），数据<strong>变化</strong>会触发</li>
+  <li>get（），数据<strong>读取</strong>会触发</li>
+</ul>
+
+<h3 id="3-劫持数据">3. 劫持数据</h3>
+
+<ul>
+  <li>要通过一个数据进行周转，如果还用原数据进行set或者get的话会导致堆栈溢出。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">lang</span><span class="o">=</span><span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">UTF-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">meta</span>
+      <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">viewport</span><span class="dl">"</span>
+      <span class="nx">content</span><span class="o">=</span><span class="dl">"</span><span class="s2">width=device-width, initial-scale=1.0</span><span class="dl">"</span>
+    <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Document</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+      <span class="c1">// 定义数据</span>
+      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">age</span><span class="p">:</span> <span class="mi">19</span>
+      <span class="p">}</span>
+
+      <span class="c1">// 同步视图的方法</span>
+      <span class="kd">function</span> <span class="nx">setView</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">name</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">age</span>
+      <span class="p">}</span>
+      <span class="nx">setView</span><span class="p">()</span>
+
+      <span class="c1">// 利用循环对数据进行监听</span>
+      <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// 利用外部数据进行数据的读写控制</span>
+        <span class="kd">let</span> <span class="nx">getValue</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="p">{</span>
+          <span class="c1">// 读数据</span>
+          <span class="kd">get</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">getValue</span>
+          <span class="p">},</span>
+          <span class="c1">// 写数据</span>
+          <span class="kd">set</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">getValue</span> <span class="o">=</span> <span class="nx">val</span>
+            <span class="nx">setView</span><span class="p">()</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Object.defineProperty</code><strong>一次只能劫持一个数据</strong>，所以源码中需要对数据进行循环遍历劫持，类似于递归的方式对所有的数据进行劫持。</li>
+  <li><strong>对象新增的数据是无法劫持到的</strong>，因为新增数据的操作是在本次数据劫持之后，新增属性并没有被劫持。所以对象新增的数据也就不是响应式的了，可以通过 <code class="language-plaintext highlighter-rouge">this.$set()</code>添加响应式属性来解决。</li>
+  <li>通过数组的下标修改数据，通过 <code class="language-plaintext highlighter-rouge">Object.defineProperty</code> 是可以劫持到的，但是vue中因为性能和用户体验的关系，取消了vue中检测数据下标变化。</li>
+  <li>但是数组的7个方法是响应式的原因是因为vue中对7个方法进行重写了，并不是完全重写，它是利用了切面编程的思想，对方法进行封装以及逻辑的处理，最终还是调用了原始的方法。</li>
+</ul>
+
+<h3 id="4-观察者模式">4. 观察者模式</h3>
+
+<p>另外响应式原理还需要配合观察者模式。</p>
+
+<ul>
+  <li>是一对多的数据依赖关系和发布订阅模式的不同在于，<strong>没有调度中心</strong>，被观察者和观察者<strong>直接通信</strong>，观察者内部会有 update 方法进行消息更新，被观察者会有 add 收集观察者，通过notify方法通知所有观察者，调用 update 方法更新观察者收到的信息。</li>
+  <li>vue 的源码中，通过 get 进行依赖的收集，会给每个数据添加一个 watcher 观察者（每一个watcher）对应的就是一个组件。通过 set 在数据变化时通知观察者（组件），然后生成虚拟DOM，进行新旧DOM对比，最后渲染页面。</li>
+</ul>
+
+<p><img src="https://v2.cn.vuejs.org/images/data.png" alt="img" /></p>
+
+:ET

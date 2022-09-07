@@ -1,0 +1,89 @@
+I"�<h1 id="css">CSS</h1>
+
+<h2 id="一-如何让盒子水平居中">一、 如何让盒子水平居中</h2>
+
+<h3 id="1-flex">1. flex</h3>
+
+<ol>
+  <li>​</li>
+</ol>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span><span class="nt">父元素</span>
+<span class="p">{</span>
+  <span class="py">dispaly</span><span class="p">:</span><span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span><span class="nb">center</span><span class="p">;</span>
+  <span class="py">align-item</span><span class="p">:</span><span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>flex + margin</li>
+</ol>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span><span class="nt">父元素</span>
+<span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span><span class="n">flex</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="nt">子元素</span>
+<span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="nb">auto</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-定位">2. 定位</h3>
+
+<ol>
+  <li>margin + 定位</li>
+</ol>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span><span class="nt">父元素</span>
+<span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span><span class="n">reletive</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="nt">子元素</span>
+<span class="p">{</span>
+  <span class="py">positon</span><span class="p">:</span><span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+  <span class="nl">right</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="nb">auto</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>定位+ transform</li>
+</ol>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span><span class="nt">父元素</span>
+<span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span><span class="n">reletive</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="nt">子元素</span>
+<span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span><span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span><span class="m">50%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span><span class="m">50%</span><span class="p">;</span>
+  <span class="py">translate</span><span class="p">:(</span><span class="m">-50%</span><span class="p">,</span><span class="m">-50%</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="二css-盒子模型">二、CSS 盒子模型</h2>
+<p>盒子模型包括的内容为：margin + border + padding + content</p>
+<h3 id="1-w3c标准盒子模型">1. W3C（标准盒子模型）</h3>
+
+<ul>
+  <li>宽度不包括 margin、border、padding、content</li>
+  <li>设置 border / padding 会使盒子变大</li>
+  <li>box-sizing ：content-box</li>
+</ul>
+
+<h3 id="2-ie-怪异盒子模型">2. IE (怪异盒子模型)</h3>
+
+<ul>
+  <li>盒子的宽度是固定的，宽度包括了 content 、border、padding</li>
+  <li>box-sizing：border-box</li>
+  <li>​</li>
+</ul>
+
+:ET

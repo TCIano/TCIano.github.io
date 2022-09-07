@@ -1,0 +1,70 @@
+I"�<p>##一、路由模式</p>
+
+<h3 id="1-hash-模式">1. Hash 模式</h3>
+
+<ul>
+  <li>有 #/</li>
+  <li>是通过 window.location（）进行路由跳转，通过 onhashChange（）事件监听路由跳转</li>
+</ul>
+
+<h3 id="2-history-模式">2. History 模式</h3>
+
+<ul>
+  <li>没有 #/</li>
+  <li>通过H5 的history API 实现，通过history.pushState（）和 history.replaceState（）进行跳转，通过 onpopState 进行监听，但是他只能监听路由的前进和后退，源码中将history.pushState（）和 history.replaceState（）进行了统一的包装，通过 pushState 函数进行包装，不管是history.pushState 还是 history.replaceState 时，底层最终都会通过 history.pushState 这个函数进行跳转，通过 history.pushState  进行监听。</li>
+</ul>
+
+<h3 id="3-abstract-模式">3. abstract 模式</h3>
+
+<ul>
+  <li>支持所有 Javascript 运行环境，如 Node.js 服务器端。<strong>如果发现没有浏览器的 API，路由会自动强制进入这个模式</strong>。</li>
+</ul>
+
+<h2 id="二路由守卫">二、路由守卫</h2>
+
+<h3 id="1-全局守卫">1. 全局守卫</h3>
+
+<p>​	路由的改变会触发导航守卫</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span><span class="p">.</span> <span class="nx">全局前置守卫</span>
+	<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span> <span class="p">...</span> <span class="p">})</span>
+	<span class="nx">router</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	    <span class="c1">// 设置动态title         </span>
+	    <span class="c1">// 根据我们在每一个路由映射对象中设置的meta元数据 来进行一个动态title的显示</span>
+	       <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">to</span><span class="p">.</span><span class="nx">matched</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">meta</span><span class="p">.</span><span class="nx">title</span>
+	    <span class="c1">// 如果我们对beforeEach进行自定义设置 必须要调用next() </span>
+		    <span class="nx">next</span><span class="p">()</span>
+		<span class="p">})</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span><span class="p">.</span> <span class="nx">全局后置守卫</span>
+	<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span> <span class="p">...</span> <span class="p">})</span> 
+	<span class="nx">router</span><span class="p">.</span><span class="nx">afterEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// ... })</span>
+</code></pre></div></div>
+
+<h3 id="2-路由独享守卫">2. 路由独享守卫</h3>
+
+<p>​	可以在路由配置上直接定义 beforeEnter 守卫。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span> 
+		<span class="na">routes</span><span class="p">:</span> <span class="p">[</span> 
+		  <span class="p">{</span> 
+		    <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/foo</span><span class="dl">'</span><span class="p">,</span> 
+		    <span class="na">component</span><span class="p">:</span> <span class="nx">Foo</span><span class="p">,</span> 
+		    <span class="na">beforeEnter</span><span class="p">:</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{}</span> 
+		  <span class="p">}</span> 
+		<span class="p">]</span> 
+	<span class="p">})</span> 
+</code></pre></div></div>
+
+<h3 id="3-组件内守卫">3. 组件内守卫</h3>
+
+<p>​	beforeRouteLeave离开守卫通常用来禁止用户在还未保存修改前突然离开。该导航可以通过 next(false) 来取消。
+​	const Foo = { 
+​		template: <code class="language-plaintext highlighter-rouge">...</code>, 
+​		beforeRouteEnter: (to, from, next) =&gt; { //不能获取组件实例 <code class="language-plaintext highlighter-rouge">this</code> } 
+​		beforeRouteUpdate (to, from, next) {//在当前路由改变，但是该组件被复用时调用,可访问this}
+​		beforeRouteLeave (to, from, next) {//导航离开该组件的对应路由时调用,可访问this}
+​	}</p>
+
+:ET

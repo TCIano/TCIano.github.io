@@ -1,0 +1,182 @@
+I"�!<h2 id="一项目配置">一、项目配置</h2>
+
+<h3 id="1-配置-babel">1. 配置 babel</h3>
+
+<ul>
+  <li>安装需要的包</li>
+  <li>在项目中通过 .babelrc 或者 babel.config.js 进行配置</li>
+  <li>presets ：是预设配置，把es6 语法 转为 es5 语法</li>
+  <li>env：根据环境进行配置</li>
+  <li>${\textcolor{red}{babel原理：}}$
+    <ul>
+      <li>将代码转换为AST语法树
+        <ol>
+          <li>将AST语法树进行遍历(babel-traverse),遍历的过程进行更新\添加\删除等等</li>
+          <li>将处理的AST语法树转为新的js代码</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-rem适配">2. rem适配</h3>
+
+<p>${\textcolor{red}{核心原理：}}$ 1 rem = 根节点（html）字体大小，在不同的屏幕小通过修改根节点字体大小来实现适配。</p>
+
+<p>${\textcolor{red}{项目中：}}$ 配置 flexible 动态修改 html 的字体大小，开发环境使用 px，上线使用 rem，可以使用<code class="language-plaintext highlighter-rouge">postcss-px-to-rem</code> 进行转化。</p>
+
+<h2 id="二打包优化">二、打包优化</h2>
+
+<h3 id="1-移除-console">1. 移除 console</h3>
+
+<ul>
+  <li>babel的env的中在生产环境配置移除console的插件。</li>
+  <li><code class="language-plaintext highlighter-rouge">babel-plugin-transform-remove-console</code></li>
+</ul>
+
+<h3 id="2-sourcemap">2. sourcemap</h3>
+
+<ul>
+  <li>将打包压缩后的文件进行映射，从而可以让项目出现问题的时候，精确定位到开发代码的某一行，同时它会产生很多 map 文件，因此生产阶段需要通过 <code class="language-plaintext highlighter-rouge">productionSourceMap:false</code>关闭。</li>
+</ul>
+
+<h3 id="3-splitchunks">3. splitChunks</h3>
+
+<p>将公共代码进行提取，(打包分包)</p>
+
+<ul>
+  <li>因为 webpack 在打包时如果一个文件在很多文件中被使用，那么他会被打包很多次。</li>
+  <li>config.optimization.splitChunks({})</li>
+  <li>可以根据 chunks配置段 进行对提取方式的配置
+    <ul>
+      <li>all：不管同步还是异步都提取一个文件。</li>
+      <li>initial：同步提取一次，异步提取一次，一共两次。</li>
+      <li>async：只提取异步加载的模块。</li>
+    </ul>
+  </li>
+  <li>cacheGroups：提取配置方案
+    <ul>
+      <li>name：生成的名</li>
+      <li>test：匹配的路径或资源名称</li>
+      <li>chunks：单独进行chunks</li>
+      <li>priority：优先级，数越大，优先级越大。</li>
+      <li>reuseExistingChunk：如果要提取的模块已存在直接复用</li>
+      <li>minChunks：最小引用次数</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-prefetch">4. prefetch</h3>
+
+<ul>
+  <li>vue/cli 默认开启了 prefetch ，在加载首页的时候，会提前获取用户可能访问的资源，进行提前加载其他路由模块。</li>
+  <li>如果在移动端，此配置可能会浪费用户的流量，因此需要通过关闭，<code class="language-plaintext highlighter-rouge">config.plugins.delete('prefetch')</code></li>
+</ul>
+
+<h3 id="5-打包成-gzip">5. 打包成 gZip</h3>
+
+<ul>
+  <li>通过 <code class="language-plaintext highlighter-rouge">compression-webpack-plugin</code>将文件打包成压缩包， 在 <strong>chainwebpack</strong> 中配置，可以通过配置项修改打包阀值，修改文件名或者其他配置的,需要服务器Nginx配置。</li>
+</ul>
+
+<h3 id="6-runtimechunk">6. runtimeChunk</h3>
+
+<ul>
+  <li>runtime 是运行时代码，即异步加载的代码。（例如路由懒加载）这些代码一般都是从主模块分离，当不设置 runtimeChunk 时候，即使只是运行时代码发生变换，重新打包，所有文件包括主模块的hash值都会变化，浏览器会断定这些内容都为变化的文件，因此无法使用缓存，也就会导致缓存失效。</li>
+  <li>如果开启 <code class="language-plaintext highlighter-rouge">config.optimization.runtimeChunk('single')</code>，打包之后，如果运行时代码发生变化，那么只会改变 runtime 文件。而打包后主模块就不会发送变化。那么主模块就可以使用强缓存。</li>
+  <li>可以利用<code class="language-plaintext highlighter-rouge">script-ext-html-webpack-plugin</code>将runTimeChunk代码生成到行内，因为单独的 文件会发送新的请求，而行内只会加载数据。</li>
+</ul>
+
+<h3 id="8-image-webpack-loader">8. image-webpack-loader</h3>
+
+<ul>
+  <li>图片的打包压缩。</li>
+</ul>
+
+<h3 id="9-路由懒加载">9. 路由懒加载</h3>
+
+<ul>
+  <li>将每个路由进行单独的打包。</li>
+</ul>
+
+<h3 id="10-webpack-排除打包">10. webpack 排除打包</h3>
+
+<ul>
+  <li>externals 配置根据环境进行忽略打包</li>
+</ul>
+
+<h3 id="11-引入cdn资源">11. 引入CDN资源</h3>
+
+<ul>
+  <li>
+    <p>经过上面的忽略生产环境的打包，再引入CDN资源，我们会发现，此时开发环境的externals并没有忽略，有两套资源，会产生冲突。</p>
+  </li>
+  <li>因此，我们需要根据环境按需引入CDN资源。</li>
+  <li>在模板中进行环境区分</li>
+</ul>
+
+<p><img src="https://tciano.github.io/assets/importcdn.png" alt="CDN" /></p>
+
+<ul>
+  <li>我们需要在 html 进行环境的区分，只在线上环境引入CDN资源。</li>
+  <li>通过 <code class="language-plaintext highlighter-rouge">html-webpack-plugin</code> 将模板html打包生成另一个html，并且将打包的js/css自动引入。</li>
+  <li>在 <code class="language-plaintext highlighter-rouge">vue.config.js</code> 中进行自定义配置，将环境变量保存到该插件上，然后通过该插件处理模板，并且拿到<code class="language-plaintext highlighter-rouge">html-webpack-plugin</code> 上的环境变量。</li>
+</ul>
+
+<ol>
+  <li>*&lt;% htmlWebpackPlugin %&gt; *在插件的文档中可以查询到<a href="https://github.com/jantimon/html-webpack-plugin#options">htmlWebpackPlugin</a></li>
+  <li>在vue.config.js中给htmlWebpackPlugin 传递参数<a href="https://cli.vuejs.org/zh/guide/webpack.html#%E4%BF%AE%E6%94%B9%E6%8F%92%E4%BB%B6%E9%80%89%E9%A1%B9">vue cli</a></li>
+</ol>
+
+<h2 id="三首屏优化">三、首屏优化</h2>
+
+<ul>
+  <li>sourcemap</li>
+  <li>splitChunks</li>
+  <li>runtimechunk</li>
+  <li>路由懒加载</li>
+  <li>gZip</li>
+  <li>image-webpack-loader</li>
+  <li>CDN资源</li>
+  <li>ssr服务端渲染
+    <ul>
+      <li>因为如果是spa加载的话，html文件只有简单的id为app的标签，主要内容实际上是打包在了js文件，通过js将组件渲染到html上，不利于seo</li>
+      <li>而且首屏加载会慢，虽然开启了路由懒加载，但是也需要js加载完毕，才能将组件渲染到页面。</li>
+      <li>而ssr服务端会把首页解析好，返回给浏览器，模板html中不仅仅是一个id为app的标签，还可以结合nuxt。</li>
+    </ul>
+  </li>
+  <li>Nuxt
+    <ul>
+      <li>nuxt是基于vue的一个通用型ui框架。同时也集成了服务端渲染。</li>
+      <li>当我们在create（）中获取后台数据，其实是客户端获取的，如果我们要在服务端渲染的话那就要使用 ` asyncData(context,callback)<code class="language-plaintext highlighter-rouge"> ，它会在组件创建之前执行，根据</code> callback(null,{key值：数据})` 来接收数据，或者没有 ${\textcolor{red}{callback}}$ 参数可以直接 return 数据。</li>
+      <li>在  <code class="language-plaintext highlighter-rouge">nuxt.config.js</code>  中对 seo 进行优化，在 ${\textcolor{red}{head选项}}$ 参数中配置。</li>
+      <li>也可以在想要配置的页面可以通过 ` head(){}` 进行自定义配置。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="四打包部署">四、打包部署</h2>
+
+<h3 id="1">1.</h3>
+
+<ul>
+  <li>运行 run build 进行打包，进行打包优化，把打包之后的 dist 文件交给后端</li>
+</ul>
+
+<h3 id="2">2.</h3>
+
+<ul>
+  <li>自测完成之后，将代码合并到 development 分支，因为 development 是受保护的，所以需要进行合并申请，审核通过之后，代码合并到 release 分支，测试人员进行自动化测试，从 release 合并到 master ，从 master 发布一个 tag 发布到线上，其实它是会自动打包部署的（gitlab+docker+Jenkins）</li>
+</ul>
+
+<h2 id="五-工程化思想">五 、工程化思想</h2>
+
+<ul>
+  <li>通过定义一个环境变量（不同环境下定义一个同名数据，在不同环境下值不同）来实现工程化的切换生产/测试/开发所用到的基准地址。</li>
+</ul>
+
+<p>​</p>
+
+<p>​</p>
+
+:ET

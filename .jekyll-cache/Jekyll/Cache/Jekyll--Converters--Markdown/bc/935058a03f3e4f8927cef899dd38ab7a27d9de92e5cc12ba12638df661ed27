@@ -1,0 +1,367 @@
+I"�T<h2 id="provideinject跨级组件通信">🔺provide/inject（跨级组件通信）</h2>
+<p>允许一个祖先组件向其所有不论组件层次有多深的子孙后代注入一个依赖。
+祖先组件中通过provide来提供变量，然后在子孙组件中通过inject来注入变量。</p>
+
+<ol>
+  <li>provide：可以是一个对象或者是一个回调函数（返回一个对象）包含可以注入子孙组件的属性。</li>
+  <li>inject：一个字符串数组或一个对象，对象的 key 是本地的绑定名。</li>
+</ol>
+
+<ul>
+  <li>
+    <p>value 是：</p>
+
+    <p>在可用的注入内容中搜索用的 key ，或一个对象，该对象的：</p>
+
+    <ul>
+      <li>from 属性  是在可用的注入内容中搜索用的 key。</li>
+      <li>default 属性  是相当于一个默认值</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>父组件<span class="nt">&lt;/h1&gt;</span>
+    <span class="c">&lt;!-- </span><span class="nt">&lt;child-1-vue</span> <span class="na">:val=</span><span class="s">"info"</span><span class="nt">&gt;&lt;/child-1-vue&gt;</span> --&gt;
+    <span class="nt">&lt;child-1-vue&gt;&lt;/child-1-vue&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">child1Vue</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/child1.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{};</span>
+  <span class="p">},</span>
+  <span class="c1">//作为一个对象</span>
+  <span class="c1">// provide: {</span>
+  <span class="c1">//   info: {</span>
+  <span class="c1">//     uname: "father",</span>
+  <span class="c1">//     age: 20,</span>
+  <span class="c1">//   },</span>
+  <span class="c1">// },</span>
+
+  <span class="c1">// 作为一个返回对象的函数</span>
+  <span class="nx">provide</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">obj</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">uname</span><span class="p">:</span> <span class="dl">"</span><span class="s2">father</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">info</span><span class="p">:</span> <span class="dl">"</span><span class="s2">789</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">child1Vue</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>child1，子组件<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>props:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;child-2-vue&gt;&lt;/child-2-vue&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">child2Vue</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./child2.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{};</span>
+  <span class="p">},</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">val</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">child2Vue</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>child2，孙子组件<span class="nt">&lt;/h1&gt;</span>
+    
+    
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{};</span>
+  <span class="p">},</span>
+  <span class="c1">//接收一个字符串数组 ---》'{uname: "father",age: 20,}'</span>
+  <span class="c1">//   inject: ["info"],</span>
+
+  <span class="c1">// 接收一个对象 ---》'{uname: "father",age: 19,}'</span>
+  <span class="na">inject</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">obj</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">form</span><span class="p">:</span> <span class="dl">"</span><span class="s2">obj</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">info</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">from</span><span class="p">:</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<p>使用场景：子孙组件和祖先组件之间的通信</p>
+<h2 id="attrslisteners">🔺attrs/listeners</h2>
+<p>场景：多级组件嵌套需要传递数据时，且不需要处理数据的时候。</p>
+
+<ol>
+  <li>$attrs 里存放的是父组件中绑定的非 Props 属性。</li>
+  <li>$listeners：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件</li>
+</ol>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>祖先组件<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;child-com-1-vue</span> <span class="na">:uname=</span><span class="s">"uname"</span> <span class="na">:age=</span><span class="s">"age"</span> <span class="err">@</span><span class="na">com1=</span><span class="s">"com1"</span><span class="nt">&gt;&lt;/child-com-1-vue&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">childCom1Vue</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/childCom1.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">uname</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ls</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">age</span><span class="p">:</span> <span class="dl">"</span><span class="s2">20</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">childCom1Vue</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">com1</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">这是祖先组件的方法</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>子组件1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;child-com-2-vue</span> <span class="na">v-bind=</span><span class="s">"$attrs"</span> <span class="na">v-on=</span><span class="s">"$listeners"</span><span class="nt">&gt;&lt;/child-com-2-vue&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">childCom2Vue</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./childCom2.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{};</span>
+  <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">childCom2Vue</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">uname</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$attrs</span><span class="p">);</span> <span class="c1">//----{"age":"20"}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$listeners</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$listeners</span><span class="p">.</span><span class="nx">com1</span><span class="p">();</span> <span class="c1">//----“这是祖先组件的方法”</span>
+  <span class="p">},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>子组件2<span class="nt">&lt;/p&gt;</span>
+     //---{"age":"20"}
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{};</span>
+  <span class="p">},</span>
+
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$attrs</span><span class="p">);</span> <span class="c1">//---{"age":"20"}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$listeners</span><span class="p">.</span><span class="nx">com1</span><span class="p">();</span> <span class="c1">//----"这是祖先组件的方法"</span>
+  <span class="p">},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="parentchildren">$parent,$children</h2>
+<ol>
+  <li>$children ：可以获取当前组件的所有子组件，并且以数组的形式返回。</li>
+  <li>$parent：可以获取当前组件的父组件，并返回当前父组件。</li>
+</ol>
+
+<h2 id="eventbus事件总线">🔺eventBus（事件总线）</h2>
+
+<ol>
+  <li>
+    <p>本质就是一个vue实例</p>
+  </li>
+  <li>
+    <p>创建实例 const eventBus = new Vue()</p>
+  </li>
+  <li>
+    <p>导出 export</p>
+  </li>
+  <li>
+    <p>在使用的组件中引入 import eventBus from “”</p>
+  </li>
+  <li>
+    <p>eventBus.$emit(‘事件名’，传递的数据)，发布事件。</p>
+  </li>
+  <li>
+    <p>另一个组件中注册自定义事件 eventBus.$on(‘事件名’，（传递来的数据）=&gt;{})，订阅事件。</p>
+
+    <p>设计模式：发布订阅模式：</p>
+
+    <p>​	一对多的依赖关系，</p>
+
+    <ul>
+      <li>发布方为一，发布消息。</li>
+      <li>依赖方为多，订阅消息。</li>
+    </ul>
+
+    <p><code class="language-plaintext highlighter-rouge">1. </code> 发布方进行事件发布，遍历存储起来的事件回调数组，再给每个回调传递参数，订阅方触发事件之后就可以拿到传递的参数。</p>
+
+    <p><code class="language-plaintext highlighter-rouge">2. </code> 订阅方订阅事件，把事件和事件对应的函数（回调）存储起来，如果订阅多个相同的事件，那么可以把相同事件的回调都存到事件对应的数组里。（$on做的只是把对应的事件以及回调存起来）。</p>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+//手写一个发布订阅模式
+Class eventBus {
+	//定义一个接收事件的对象
+	clientList = {},
+	$on = function(event,callback){
+		//如果没有当前事件，那么就给当前事件名当做一个数组，里面存放事件回调
+		if(!this.clientList[event]){
+			this.clientList[event] = [callback]
+		}
+		//如果有当前事件，那么就给当前事件数组添加一个回调
+		this.clientList[event].push(callback)
+	},
+	$emit = function(event,val){
+		//把对象里每个属性拿出来放到一个数组中，遍历每个属性名（即对象名）
+		Object.keys(this.clientList).forEach(item =&gt;{
+			//如果没有该事件，就跳出
+			if(!this.clientList[event]){
+				return false
+			}
+			
+			//给每个属性里面的每个方法传递参数。
+			this.clientList[event].forEach(callback =&gt;{
+				callback(val)
+			})
+			
+		})
+	}
+}
+
+//new 一个事件总线实例
+const event  = new eventBus()
+//订阅事件
+event.$on('send',(val)=&gt;{
+	console.log(val)
+})
+event.$on('send',(val)=&gt;{
+	console.log(val)
+})
+
+//发布事件,并且给回调传参
+event.$emit('send',1)
+</code></pre></div></div>
+
+<h2 id="vuex">vuex</h2>
+
+<ol>
+  <li>
+    <p>vuex就是基于vue的一个状态管理工具</p>
+  </li>
+  <li>
+    <p>它主要用于实现数据的共享，同时数据也是响应式的，因此它就方便了各个组件之间共享数据的操作，也有利于数据的维护的管理。</p>
+  </li>
+  <li>
+    <p>它有五个主要的状态：</p>
+
+    <ul>
+      <li></li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>state 是用来存储和定义用来共享的数据的属性，可以用$store 或者是 辅助函数来拿到state的数据，因为辅助函数本质上会返回一个对象，可以把vuex中的数据映射过来，在使用的时候必须解构出来。</li>
+  <li>mutations 是 用来修改state 数据的唯一来源，但是也可以直接修改state 中的数据，但是不建议，因为一旦数据出现错误会造成state中的数据混乱，它一般是用来处理同步流程，通过commit 提交给mutations 从而修改state 中的数据，如果用它处理异步流程，那么肯造成调试工具的不准确。
+    <ul>
+      <li>actions 主要用来处理异步流程，通过dispatch 传递给 actions 在调用 mutations 来修改数据，一般在工作中，为了避免操作的繁琐，基本都把同步异步流程都放到actions中进行处理，而把数据的修改提交到mutations中。</li>
+      <li>getters 主要把state中的数据新建派生处理，即根据state中的数据生成另一种数据。</li>
+      <li>modules 主要是把vuex数据模块化，方便管理和维护，每个模块里都有对应模块的 state/mutations/actions/getters 属性，如果没有开启命名空间，模块中的 mutations/actions中的方法和全局中的并无差别，开启命名空间之后，使用各自模块的方法和数据都必须加上模块名，或者是根据createNamespacedHelper生成对应命名空间的辅助函数，它能拿到当前命名空间的所有辅助函数，从而实现对当前命名空间数据或方法的使用。</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>vuex的缺点就是 他其中的数据不支持持久化操作，当然我们可以通过添加本地存储的方式来实现手动持久化，或者是通过插件vuex-persistedstate 来实现自动的数据持久化操作，其中可以对指定模块进行数据持久化。</p>
+  </li>
+  <li>
+    <p>在日常的业务中，一般的用户信息以及用户唯一标识token都放到vuex中进行存储，以及一些多组件之间需要频繁传递的参数一般也放到vuex中进行存储。</p>
+  </li>
+</ol>
+
+<h2 id="v-model">v-model</h2>
+
+<h2 id="sync">.sync</h2>
+
+<h2 id="数据提升">数据提升</h2>
+
+<h2 id="父传子子传父">父传子，子传父</h2>
+
+:ET
