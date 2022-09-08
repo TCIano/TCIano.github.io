@@ -3,7 +3,6 @@ layout: default
 title: Photes
 ---
 
-{% include header.html %}
 
 <style>
   .container {
@@ -74,6 +73,18 @@ title: Photes
     display: inline;
   }
 </style>
+
+{% include header.html %}
+
+<div
+  class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }}"
+  data-theme="{{ site.theme-color }}"
+>
+  <h2>照片墙</h2>
+</div>
+
+
+<main class="tags-content">
 
 <div class="grid">
   <div class="grid-size"></div>
@@ -170,10 +181,14 @@ title: Photes
   </div>
 </div>
 
+</main>
+
+{% include footer.html %}
+
 <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
 <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
 <script src="{{"/assets/js/view.min.js?auto" | relative_url}}"></script>
-<script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script>
+<!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
 
 <script>
   var grid = document.querySelector(".grid");
@@ -188,4 +203,3 @@ title: Photes
     msnry.layout();
   });
 </script>
-{% include footer.html %}
