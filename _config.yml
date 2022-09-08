@@ -18,6 +18,7 @@ baseurl: ''
 nav:
   首页: '/'
   标签: '/tags.html'
+  影集: '/photos.markdown'
 
 # Footer
 footer:
