@@ -1,8 +1,9 @@
 ---
 layout: default
-title: 影集
-permalink: photos.html
+title: Photes
 ---
+
+{% include header.html %}
 
 <style>
   .container {
@@ -73,8 +74,6 @@ permalink: photos.html
     display: inline;
   }
 </style>
-
-{% include header.html %}
 
 <div class="grid">
   <div class="grid-size"></div>
@@ -171,11 +170,11 @@ permalink: photos.html
   </div>
 </div>
 
-{% include footer.html %}
+<script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
+<script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
+<script src="{{"/assets/js/view.min.js?auto" | relative_url}}"></script>
+<script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script>
 
-<script src="{{site.baseurl}}/public/js/masonry.pkgd.min.js"></script>
-<script src="{{site.baseurl}}/public/js/imagesloaded.pkgd.min.js"></script>
-<script src="{{site.baseurl}}/public/js/view.min.js?auto"></script>
 <script>
   var grid = document.querySelector(".grid");
 
@@ -189,3 +188,4 @@ permalink: photos.html
     msnry.layout();
   });
 </script>
+{% include footer.html %}
