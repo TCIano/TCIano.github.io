@@ -11,7 +11,7 @@ layout: default
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url}}">
   <title>影集</title>
-  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
   <!-- <script src="{{"/assets/js/view.min.js" | relative_url}}"></script> -->
   <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
   <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
@@ -161,16 +161,25 @@ layout: default
       msnry.layout();
     });
   
-    $(function() {
-    $('#viewer').viewer({
+  //   $(function() {
+  //   $('#viewer').viewer({
+  //     url: 'data-original',
+  //     button: true,
+  //     navbar: true,
+  //     title: true,
+  //     transition: true
+  
+  //   });
+  // });
+  
+
+var viewer = new Viewer(document.getElementById('viewer'),{
       url: 'data-original',
       button: true,
       navbar: true,
       title: true,
       transition: true
-  
-    });
-  });
+});
  
   
   
