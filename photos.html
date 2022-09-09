@@ -102,16 +102,18 @@ layout: default
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
-  <!-- <div class="grid-item">
+  {% for p in site.photos %}
+  <div class="grid-item">
     <a
       class="view"
-      href="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}"
+      href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
       title="{{photo}}"
       rel="vsco"
     >
-      <img src="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}" />
+      <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" />
     </a>
-  </div> -->
+  </div>
+  {% endfor %}
   <div class="grid-item">
     <a
       class="view"
