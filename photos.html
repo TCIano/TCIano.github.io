@@ -102,6 +102,18 @@ layout: default
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
+  {% for photo in "/assets/photos" % }
+  <div class="grid-item">
+    <a
+      class="view"
+      href="{{ photo }}"
+      title="新生"
+      rel="vsco"
+    >
+      <img src="{{photo}}" />
+    </a>
+  </div>
+  {%endfor%}
   <div class="grid-item">
     <a
       class="view"
