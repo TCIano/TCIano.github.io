@@ -12,10 +12,10 @@ layout: default
     max-width: initial;
     padding: 10px;
   }
-  .grid {
+  /* .grid {
     
-    /* width: 850px; */
-  }
+    width: 850px;
+  } */
   .grid::after {
     content: "";
     display: block;
@@ -208,7 +208,7 @@ layout: default
   var msnry = new Masonry(grid, {
     itemSelector: ".grid-item",
     columnWidth: ".grid-size",
-    gutter: 10,
+    gutter: 5,
   });
 
   imagesLoaded(grid).on("progress", function () {
