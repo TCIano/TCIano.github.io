@@ -128,7 +128,7 @@ layout: default
         title="{{photo}}"
         rel="vsco"
       >
-        <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
+        <img id="image" src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
       </a>
     </div>
     {% endfor %}
@@ -174,19 +174,19 @@ layout: default
     });
   
   
-  // var $image = $('#viewer')
-  // $image.viewer({
-  //   url: 'data-original',
-  //     button: true,
-  //     navbar: true,
-  //     title: true,
-  //     transition: true,
-  //     viewed: function(){
-  //       $image.viewer('zoomTo',1);
-  //       $image.viewer('show')
-  //     }
-  // });
-  // var viewer = $image.data('viewer')
+  var $image = $('#image')
+  $image.viewer({
+    url: 'data-original',
+      button: true,
+      navbar: true,
+      title: true,
+      transition: true,
+      viewed: function(){
+        $image.viewer('zoomTo',1);
+        $image.viewer('show')
+      }
+  });
+  var viewer = $image.data('viewer')
 
 // var viewer = new Viewer(document.getElementById('viewer'),{
 //       url: 'data-original',
