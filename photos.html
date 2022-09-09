@@ -12,10 +12,11 @@ layout: default
     max-width: initial;
     padding: 10px;
   }
-  /* .grid {
+  .grid {
     
-    width: 850px;
-  } */
+    /* width: 850px; */
+    margin: 0 auto;
+  }
   .grid::after {
     content: "";
     display: block;
@@ -209,6 +210,7 @@ layout: default
     itemSelector: ".grid-item",
     columnWidth: ".grid-size",
     gutter: 5,
+    fitWidth: true
   });
 
   imagesLoaded(grid).on("progress", function () {
