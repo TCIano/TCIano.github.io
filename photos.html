@@ -153,9 +153,19 @@ layout: default
     msnry.layout();
   });
 
-  $(function() {
+ 
+</script>
+
+<script>
+
+$(function() {
   $('#viewer').viewer({
-    url: 'src'
+    url: 'src',
+    button: true,
+    navbar: true,
+    title: true,
+    transition: true
+
   });
 });
 </script>
