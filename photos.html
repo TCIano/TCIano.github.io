@@ -12,7 +12,6 @@ layout: default
   <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url}}">
   <title>影集</title>
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-  <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
   <!-- <script src="{{"/assets/js/view.min.js" | relative_url}}"></script> -->
   <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
   <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
@@ -100,36 +99,7 @@ layout: default
     }
   </style>
 
-  <script>
-    var grid = document.querySelector(".grid");
   
-    var msnry = new Masonry(grid, {
-      itemSelector: ".grid-item",
-      columnWidth: ".grid-item",
-      gutter: 5,
-      fitWidth: true
-    });
-  
-    imagesLoaded(grid).on("progress", function () {
-      msnry.layout();
-    });
-  
-   
-  </script>
-  
-  <script>
-  
-  $(function() {
-    $('#viewer').viewer({
-      url: 'data-original',
-      button: true,
-      navbar: true,
-      title: true,
-      transition: true
-  
-    });
-  });
-  </script>
 </head>
 <body>
  
@@ -176,6 +146,36 @@ layout: default
   
   </main>
   <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
+  <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
+  <script>
+    var grid = document.querySelector(".grid");
+  
+    var msnry = new Masonry(grid, {
+      itemSelector: ".grid-item",
+      columnWidth: ".grid-item",
+      gutter: 5,
+      fitWidth: true
+    });
+  
+    imagesLoaded(grid).on("progress", function () {
+      msnry.layout();
+    });
+  
+    $(function() {
+    $('#viewer').viewer({
+      url: 'data-original',
+      button: true,
+      navbar: true,
+      title: true,
+      transition: true
+  
+    });
+  });
+ 
+  
+  
+  </script>
+  
 
   
   {% include footer.html %}
