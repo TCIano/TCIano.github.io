@@ -1,5 +1,6 @@
 ---
 layout: default
+photos: 江南 灵隐 寺绿 日常 日落
 ---
 
 
@@ -102,98 +103,29 @@ layout: default
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
-  {% for photo in "/assets/photos" % }
+  {% for photo in page.photos % }
   <div class="grid-item">
     <a
       class="view"
-      href="{{ photo }}"
-      title="新生"
+      href="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}"
+      title="{{photo}}"
       rel="vsco"
     >
-      <img src="{{photo}}" />
+      <img src="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}" />
     </a>
   </div>
   {%endfor%}
   <div class="grid-item">
     <a
       class="view"
-      href="https://infp.github.io/photos/9.jpg"
+      href="{{"/assets/"}}"
       title="新生"
       rel="vsco"
     >
       <img src="https://infp.github.io/photos/9.jpg" />
     </a>
   </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/8.jpg"
-      title="西单路口"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/8.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/7.jpg"
-      title="牛牛"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/7.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/6.jpg"
-      title="人民公园"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/6.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/5.jpg"
-      title="花，摄于忻州"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/5.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/4.jpg"
-      title="景中景，摄于北京"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/4.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/3.jpg"
-      title="春天"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/3.jpg" />
-    </a>
-  </div>
-  <div class="grid-item">
-    <a
-      class="view"
-      href="https://infp.github.io/photos/2.jpg"
-      title="玉渊潭公园"
-      rel="vsco"
-    >
-      <img src="https://infp.github.io/photos/2.jpg" />
-    </a>
-  </div>
+ 
   <div class="grid-item">
     <a
       class="view"
