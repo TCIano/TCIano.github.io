@@ -3,168 +3,183 @@ layout: default
 ---
 
 
-<style>
-  .container {
-    width: initial;
-    /* position: relative; */
-  }
-  .content {
-    max-width: initial;
-    padding: 10px;
-  }
-  .grid {
-    
-    /* width: 850px; */
-    margin: 0 auto;
-  }
-  .grid::after {
-    content: "";
-    display: block;
-    clear: both;
-    /* position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto */
-  }
-  .grid-item {
-    float: left;
-    width: 260px;
-    margin-bottom: 10px;
-  }
-  .grid-size {
-    width: 240px;
-  }
-  @media (max-width: 48em) {
-    .grid-item,
-    .grid-size {
-      width: calc(50% - 10px);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url }}">
+  <title>影集</title>
+  <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
+  <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
+  <script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
+  <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
+  <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
+  <style>
+    .container {
+      width: initial;
+      /* position: relative; */
     }
-  }
-  .grid-item a {
-    display: block;
-    width: 100%;
-  }
-  .grid-item img {
-    width: 100%;
-    margin: 0;
-    transition: 0.3s ease;
-  }
-  .grid-item a:hover {
-    border-bottom: none;
-  }
-  /* view.js */
-  .viewer li {
-    -webkit-transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-    -moz-transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-    transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .viewer .caption {
-    visibility: hidden;
-    opacity: 0;
-    line-height: 50px;
-    font-size: 0.8rem;
-    -webkit-transition: opacity 1.5s ease-in-out;
-    -moz-transition: opacity 1.5s ease-in-out;
-    transition: opacity 1.5s ease-in-out;
-  }
-  .viewer .current .caption {
-    opacity: 100;
-    visibility: visible;
-  }
-  .viewer li > div {
-    top: 20px;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-  }
-  .viewer li.has-caption > div {
-    bottom: 50px;
-  }
-  .viewer span > img {
-    display: inline;
-  }
-</style>
-
-{% include header.html %}
-
-<div
-  class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }}"
-  data-theme="{{ site.theme-color }}"
->
-  <h2>照片墙</h2>
-</div>
-
-
-<main class="content container">
-
-<div class="grid">
-  <div class="grid-size"></div>
-  <!-- Add new photo from here -->
-  {% for photo in site.photos %}
-  <div class="grid-item" id="viewer">
-    <a
-      class="view"
-      href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
-      title="{{photo}}"
-      rel="vsco"
-    >
-      <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
-    </a>
-  </div>
-  {% endfor %}
-      id="viewer"
-  <div class="grid-item" id="viewer">
-    <a
-      class="view"
-      href="{{"/assets/photos/上海.jpg" | relative_url}}"
-      title="新生"
-      rel="vsco"
-    >
-      <img src="{{"/assets/photos/上海.jpg" | relative_url}}" />
-    </a>
-  </div>
+    .content {
+      max-width: initial;
+      padding: 10px;
+    }
+    .grid {
+      
+      /* width: 850px; */
+      margin: 0 auto;
+    }
+    .grid::after {
+      content: "";
+      display: block;
+      clear: both;
+      /* position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      margin:auto */
+    }
+    .grid-item {
+      float: left;
+      width: 260px;
+      margin-bottom: 10px;
+    }
+    .grid-size {
+      width: 240px;
+    }
+    @media (max-width: 48em) {
+      .grid-item,
+      .grid-size {
+        width: calc(50% - 10px);
+      }
+    }
+    .grid-item a {
+      display: block;
+      width: 100%;
+    }
+    .grid-item img {
+      width: 100%;
+      margin: 0;
+      transition: 0.3s ease;
+    }
+    .grid-item a:hover {
+      border-bottom: none;
+    }
+    /* view.js */
+    .viewer li {
+      -webkit-transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+      -moz-transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: width 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .viewer .caption {
+      visibility: hidden;
+      opacity: 0;
+      line-height: 50px;
+      font-size: 0.8rem;
+      -webkit-transition: opacity 1.5s ease-in-out;
+      -moz-transition: opacity 1.5s ease-in-out;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .viewer .current .caption {
+      opacity: 100;
+      visibility: visible;
+    }
+    .viewer li > div {
+      top: 20px;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+    }
+    .viewer li.has-caption > div {
+      bottom: 50px;
+    }
+    .viewer span > img {
+      display: inline;
+    }
+  </style>
+  <script>
+    var grid = document.querySelector(".grid");
+  
+    var msnry = new Masonry(grid, {
+      itemSelector: ".grid-item",
+      columnWidth: ".grid-item",
+      gutter: 5,
+      fitWidth: true
+    });
+  
+    imagesLoaded(grid).on("progress", function () {
+      msnry.layout();
+    });
+  
+   
+  </script>
+  
+  <script>
+  
+  $(function() {
+    $('#viewer').viewer({
+      url: 'data-original',
+      button: true,
+      navbar: true,
+      title: true,
+      transition: true
+  
+    });
+  });
+  </script>
+</head>
+<body>
  
-</div>
-
-</main>
-
-{% include footer.html %}
-
-<script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
-<script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
-<script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
-<script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
-<!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
-
-<script>
-  var grid = document.querySelector(".grid");
-
-  var msnry = new Masonry(grid, {
-    itemSelector: ".grid-item",
-    columnWidth: ".grid-item",
-    gutter: 5,
-    fitWidth: true
-  });
-
-  imagesLoaded(grid).on("progress", function () {
-    msnry.layout();
-  });
-
- 
-</script>
-
-<script>
-
-$(function() {
-  $('#viewer').viewer({
-    url: 'data-original',
-    button: true,
-    navbar: true,
-    title: true,
-    transition: true
-
-  });
-});
-</script>
+  
+  {% include header.html %}
+  
+  <div
+    class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }}"
+    data-theme="{{ site.theme-color }}"
+  >
+    <h2>照片墙</h2>
+  </div>
+  
+  
+  <main class="content container">
+  
+  <div class="grid" id="viewer" >
+    <div class="grid-size"></div>
+    <!-- Add new photo from here -->
+    {% for photo in site.photos %}
+    <div class="grid-item" >
+      <a
+        class="view"
+        href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
+        title="{{photo}}"
+        rel="vsco"
+      >
+        <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
+      </a>
+    </div>
+    {% endfor %}
+    <div class="grid-item">
+      <a
+        class="view"
+        href="{{"/assets/photos/上海.jpg" | relative_url}}"
+        title="新生"
+        rel="vsco"
+      >
+        <img src="{{"/assets/photos/上海.jpg" | relative_url}}" />
+      </a>
+    </div>
+   
+  </div>
+  
+  </main>
+  
+  {% include footer.html %}
+  
+  
+  
+  
+  
+</body>
+</html>
