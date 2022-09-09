@@ -105,6 +105,7 @@ layout: default
   {% for photo in site.photos %}
   <div class="grid-item">
     <a
+      id="viewer"
       class="view"
       href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
       title="{{photo}}"
@@ -116,6 +117,7 @@ layout: default
   {% endfor %}
   <div class="grid-item">
     <a
+      id="viewer"
       class="view"
       href="{{"/assets/photos/上海.jpg" | relative_url}}"
       title="新生"
@@ -134,6 +136,7 @@ layout: default
 <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
 <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
 <script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
+<script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
 <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
 
 <script>
@@ -149,4 +152,10 @@ layout: default
   imagesLoaded(grid).on("progress", function () {
     msnry.layout();
   });
+
+  $(function() {
+  $('#viewer').viewer({
+    url: 'src'
+  });
+});
 </script>
