@@ -178,7 +178,11 @@ var viewer = new Viewer(document.getElementById('viewer'),{
       button: true,
       navbar: true,
       title: true,
-      transition: true
+      transition: true,
+      viewed() {
+        viewer.zoomTo(1);
+        viewer.show()
+      }
 });
  
   
