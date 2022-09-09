@@ -9,11 +9,11 @@ layout: default
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url }}">
+  <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url}}">
   <title>影集</title>
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
-  <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
-  <script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
+  <!-- <script src="{{"/assets/js/view.min.js" | relative_url}}"></script> -->
   <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
   <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
   <style>
@@ -99,6 +99,7 @@ layout: default
       display: inline;
     }
   </style>
+
   <script>
     var grid = document.querySelector(".grid");
   
@@ -174,6 +175,8 @@ layout: default
   </div>
   
   </main>
+  <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
+
   
   {% include footer.html %}
   
