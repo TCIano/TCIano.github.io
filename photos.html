@@ -124,11 +124,11 @@ layout: default
     <div class="grid-item" >
       <a
         class="view"
-        href="#"
+        href="javascript:;"
         title="{{photo}}"
         rel="vsco"
       >
-        <img   src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
+        <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
       </a>
     </div>
     {% endfor %}
@@ -158,7 +158,7 @@ layout: default
   </main>
   <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
   <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
-  <script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
+  <script src="{{"/assets/js/view.min.js?auto" | relative_url}}"></script>
   <script>
     var grid = document.querySelector(".grid");
   
