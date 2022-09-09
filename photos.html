@@ -1,6 +1,6 @@
 ---
 layout: default
-photos: 江南 灵隐 寺绿 日常 日落
+photos: 江南 灵隐寺 绿 日常 日落
 ---
 
 
@@ -103,7 +103,8 @@ photos: 江南 灵隐 寺绿 日常 日落
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
-  {% for photo in page.photos % }
+  {% if page.tags.photos > 0 %}
+    {% for photo in page.photos % }
   <div class="grid-item">
     <a
       class="view"
@@ -114,7 +115,8 @@ photos: 江南 灵隐 寺绿 日常 日落
       <img src="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}" />
     </a>
   </div>
-  {%endfor%}
+    {% endfor %}
+  {% endif %}
   <div class="grid-item">
     <a
       class="view"
