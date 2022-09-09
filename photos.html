@@ -119,11 +119,12 @@ layout: default
   <div class="grid"  >
     <div class="grid-size"></div>
     <!-- Add new photo from here -->
+    <!-- {{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }} -->
     {% for photo in site.photos %}
     <div class="grid-item" >
       <a
         class="view"
-        href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
+        href="#"
         title="{{photo}}"
         rel="vsco"
       >
