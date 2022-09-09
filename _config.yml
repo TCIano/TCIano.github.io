@@ -20,6 +20,10 @@ nav:
   标签: '/tags.html'
   影集: '/photos.html'
 
+# 照片名字
+photos: 江南 灵隐寺 绿 日常 日落
+
+
 # Footer
 footer:
   since: 2017
