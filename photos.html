@@ -139,17 +139,16 @@ layout: default
         title="新生"
         rel="vsco"
       >
-        <img src="{{"/assets/photos/上海.jpg" | relative_url}}" />
+        <img id="image" src="{{"/assets/photos/上海.jpg" | relative_url}}" data-original="{{"/assets/photos/上海.jpg" | relative_url}}" />
       </a>
     </div>
     <div class="grid-item">
       <a
         class="view"
-        href="{{"/assets/photos/上海.jpg" | relative_url}}"
         title="新生"
         rel="vsco"
       >
-        <img src="{{"/assets/photos/上海.jpg" | relative_url}}" />
+        <img id="image" src="{{"/assets/photos/上海.jpg" | relative_url}}" data-original="{{"/assets/photos/上海.jpg" | relative_url}}" />
       </a>
     </div>
    
@@ -176,7 +175,7 @@ layout: default
   
   var $image = $('#image')
   $image.viewer({
-    url: 'data-original',
+      url: 'data-original',
       button: true,
       navbar: true,
       title: true,
