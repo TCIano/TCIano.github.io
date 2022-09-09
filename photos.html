@@ -102,8 +102,7 @@ layout: default
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
-  {% for photo in site.photos % }
-  <div class="grid-item">
+  <!-- <div class="grid-item">
     <a
       class="view"
       href="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}"
@@ -112,16 +111,15 @@ layout: default
     >
       <img src="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}" />
     </a>
-  </div>
-  {% endfor %}
-  <!-- <div class="grid-item">
+  </div> -->
+  <div class="grid-item">
     <a
       class="view"
-      href="{{"/assets/"}}"
+      href="{{"/assets/photos/上海.jpg" | relative_url}}"
       title="新生"
       rel="vsco"
     >
-      <img src="https://infp.github.io/photos/9.jpg" />
+      <img src="{{"/assets/photos/上海.jpg" | relative_url}}" />
     </a>
   </div>
  
@@ -134,7 +132,7 @@ layout: default
     >
       <img src="https://infp.github.io/photos/1.jpg" />
     </a>
-  </div> -->
+  </div>
 </div>
 
 </main>
