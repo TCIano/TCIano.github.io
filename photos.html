@@ -119,7 +119,7 @@ layout: default
   <div class="grid"  >
     <div class="grid-size"></div>
     <!-- Add new photo from here -->
-    <!-- {% for photo in site.photos %}
+    {% for photo in site.photos %}
     <div class="grid-item" >
       <a
         class="view"
@@ -130,7 +130,7 @@ layout: default
         <img   src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
       </a>
     </div>
-    {% endfor %} -->
+    {% endfor %}
     <div class="grid-item">
       <a
         class="view"
@@ -157,7 +157,7 @@ layout: default
   </main>
   <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
   <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
-  <script src="{{"/assets/js/view.min.js?auto" | relative_url}}"></script>
+  <script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
   <script>
     var grid = document.querySelector(".grid");
   
