@@ -9,11 +9,11 @@ layout: default
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url}}">
   <title>影集</title>
-  <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <!-- <script src="{{"/assets/js/view.min.js" | relative_url}}"></script> -->
   <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
+  <link rel="stylesheet" href="{{"/assets/css/viewer.min.css" | relative_url}}">
   <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
   <style>
     .container {
@@ -116,7 +116,7 @@ layout: default
   
   <main class="content container">
   
-  <div class="grid" id="viewer" >
+  <div class="grid"  >
     <div class="grid-size"></div>
     <!-- Add new photo from here -->
     {% for photo in site.photos %}
@@ -127,7 +127,7 @@ layout: default
         title="{{photo}}"
         rel="vsco"
       >
-        <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
+        <img id="viewer"  src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
       </a>
     </div>
     {% endfor %}
@@ -161,29 +161,32 @@ layout: default
       msnry.layout();
     });
   
-  //   $(function() {
-  //   $('#viewer').viewer({
-  //     url: 'data-original',
-  //     button: true,
-  //     navbar: true,
-  //     title: true,
-  //     transition: true
   
-  //   });
-  // });
-  
-
-var viewer = new Viewer(document.getElementById('viewer'),{
-      url: 'data-original',
+  var $image = $('#viewer')
+  $image.viewer({
+    url: 'data-original',
       button: true,
       navbar: true,
       title: true,
       transition: true,
-      viewed() {
-        viewer.zoomTo(1);
-        viewer.show()
+      viewed: function(){
+        $image.viewer('zoomTo',1);
+        $image.viewer('show')
       }
-});
+  });
+  var viewer = $image.data('viewer')
+
+// var viewer = new Viewer(document.getElementById('viewer'),{
+//       url: 'data-original',
+//       button: true,
+//       navbar: true,
+//       title: true,
+//       transition: true,
+//      viewed() {
+//         viewer.zoomTo(1);
+//         viewer.show()
+//       }
+// });
  
   
   
