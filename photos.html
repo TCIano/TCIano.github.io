@@ -30,11 +30,11 @@ layout: default
   }
   .grid-item {
     float: left;
-    width: 240px;
+    width: 250px;
     margin-bottom: 10px;
   }
   .grid-size {
-    width: 250px;
+    width: 240px;
   }
   @media (max-width: 48em) {
     .grid-item,
@@ -208,7 +208,7 @@ layout: default
 
   var msnry = new Masonry(grid, {
     itemSelector: ".grid-item",
-    columnWidth: ".grid-size",
+    columnWidth: ".grid-item",
     gutter: 5,
     fitWidth: true
   });
