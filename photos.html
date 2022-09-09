@@ -103,21 +103,20 @@ layout: default
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
   {% for photo in site.photos %}
-  <div class="grid-item">
+  <div class="grid-item" id="viewer">
     <a
-      id="viewer"
       class="view"
       href="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"
       title="{{photo}}"
       rel="vsco"
     >
-      <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" />
+      <img src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" alt="{{photo}}"  />
     </a>
   </div>
   {% endfor %}
-  <div class="grid-item">
-    <a
       id="viewer"
+  <div class="grid-item" id="viewer">
+    <a
       class="view"
       href="{{"/assets/photos/上海.jpg" | relative_url}}"
       title="新生"
@@ -135,7 +134,7 @@ layout: default
 
 <script src="{{ "/assets/js/masonry.pkgd.min.js" | relative_url }}"></script>
 <script src="{{"/assets/js/imagesloaded.pkgd.min.js" | relative_url}}"></script>
-<!-- <script src="{{"/assets/js/view.min.js" | relative_url}}"></script> -->
+<script src="{{"/assets/js/view.min.js" | relative_url}}"></script>
 <script src="{{"/assets/js/viewer.min.js" | relative_url}}"></script>
 <!-- <script src="{{"/assets/js/drawer.min.js" | relative_url}}"></script> -->
 
@@ -160,7 +159,7 @@ layout: default
 
 $(function() {
   $('#viewer').viewer({
-    url: 'src',
+    url: 'data-original',
     button: true,
     navbar: true,
     title: true,
