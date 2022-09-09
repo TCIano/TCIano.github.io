@@ -103,20 +103,20 @@ photos: 江南 灵隐寺 绿 日常 日落
 <div class="grid">
   <div class="grid-size"></div>
   <!-- Add new photo from here -->
-  <!-- {% if page.tags.photos > 0 %}
+  {% if page.tags.photos > 0 %}
     {% for photo in page.photos % }
   <div class="grid-item">
     <a
       class="view"
-      href="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}"
+      href="{{ "/assets/photos" | append: photo | append: 'jpg'  }}"
       title="{{photo}}"
       rel="vsco"
     >
-      <img src="{{ "/assets/photos" | append: photo | append: 'jpg' | relative_url }}" />
+      <img src="{{ "/assets/photos" | append: photo | append: 'jpg'  }}" />
     </a>
   </div>
     {% endfor %}
-  {% endif %} -->
+  {% endif %}
   <div class="grid-item">
     <a
       class="view"
