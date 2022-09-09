@@ -128,7 +128,7 @@ layout: default
         title="{{photo}}"
         rel="vsco"
       >
-        <img  src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"   />
+        <img  src="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}" data-original="{{ "/assets/photos/" | append: photo | append: '.jpg' | relative_url }}"  />
       </a>
     </div>
     {% endfor %}
@@ -175,15 +175,15 @@ layout: default
   
   var $image = $('#image')
   $image.viewer({
-      // url: 'data-original',
-      button: true,
-      navbar: true,
-      title: true,
-      transition: true,
-      viewed: function(){
-        $image.viewer('zoomTo',1);
-        $image.viewer('show')
-      }
+      url: 'data-original',
+      // button: true,
+      // navbar: true,
+      // title: true,
+      // transition: true,
+      // viewed: function(){
+      //   $image.viewer('zoomTo',1);
+      //   $image.viewer('show')
+      // }
   });
   var viewer = $image.data('viewer')
 
