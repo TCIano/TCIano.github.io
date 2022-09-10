@@ -94,7 +94,7 @@ description: 欢迎来到我的博客
         <div class="search-card">
             <input id="search_input" type="text" placeholder="搜索..." autocomplete="off">
             <i class="iconfont icon-search"></i>
-            <!-- <div class="search_result"></div> -->
+            <div id="search_result"></div>
             <ul id="search_result"></ul>
         </div>
         <!-- <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script> -->
@@ -109,6 +109,7 @@ description: 欢迎来到我的博客
                 limit: 20, // 返回最大文章数
                 fuzzy: false // 是否模糊匹配
             })
+            sjs.search()
         </script>
         {% endif %}
 
