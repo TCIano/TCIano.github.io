@@ -195,7 +195,6 @@ $(document).ready(function () {
     }
 
     $.getJSON("../../search.json").done(function (data) {
-      console.log(date);
       var html = "";
       for (var i in data) {
         var item = data[i];
@@ -203,7 +202,7 @@ $(document).ready(function () {
         var tags = item.tags;
         var url = item.url;
         var content = item.content;
-        var k = title + tags;
+        var k = title + tags + content;
         if (keywords !== "" && k.toLowerCase().indexOf(keywords) >= 0) {
           html +=
             '<a class="search_item" href="' +
