@@ -4,9 +4,7 @@ home-title: 前端个人博客，这里是我学习的开始
 description: 欢迎来到我的博客
 ---
 
-
 {% include header.html %}
-
 <div
     class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}"
     data-theme="{{ site.theme-color }}"
@@ -22,25 +20,25 @@ description: 欢迎来到我的博客
             <article class="article-item">
                 {% if post.cover %}
                 <div class="post-cover">
-                    <a class="post-link" href=" " title="{{ post.title }}"></a >
-                    < img src="{{ post.cover | relative_url }}" href="{{ post.url | relative_url }}" alt="">
+                    <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a>
+                    <img src="{{ post.cover | relative_url }}" href="{{ post.url | relative_url }}" alt="">
                 </div>
                 {% endif %}
                 <section class="post-preview">
-                    <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a >
+                    <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a>
                     <h2 class="post-title">{{ post.title }}</h2>
                     {% if post.subtitle %}
                     <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                     {% endif %}
                     {% if post.subtitle.size==0 or post.subtitle==nil %}
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 126}}</p >
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 126}}</p>
                     {% endif %}
                 </section>
                 <footer class="post-meta">
                     <div class="post-tags">
                         {% if post.tags.size > 0 %}
                             {% for tag in post.tags  %}
-                            <a href={{ "tags.html#" | append: tag | relative_url }} class="post-tag">{{ tag }}</a >
+                            <a href={{ "tags.html#" | append: tag | relative_url }} class="post-tag">{{ tag }}</a>
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -59,11 +57,11 @@ description: 欢迎来到我的博客
         <div class="g-sidebar">
             <section class="author-card">
                 <div class="avatar">
-                    < img src="{{ site.avatar | relative_url }}" alt="">
+                    <img src="{{ site.avatar | relative_url }}" alt="">
                 </div>
                 <div class="author-name" rel="author">{{ site.author }}</div>
                 <div class="bio">
-                    <p>{{ site.bio }}</p >
+                    <p>{{ site.bio }}</p>
                 </div>
                 {% if site.sns.size > 0 %}
                 <ul id="sns-links" class="sns-links">
@@ -71,7 +69,7 @@ description: 欢迎来到我的博客
                     <li>
                         <a href="{{ s[1] }}" target="_blank">
                             <i class="iconfont icon-{{ s[0] }}"></i>
-                        </a >
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -84,22 +82,41 @@ description: 欢迎来到我的博客
                     {% if forloop.index > site.recommend-condition-size %}
                         {% break %}
                     {% endif %}
-                    {{ tag[0]}}
+                    <a href="{{ "tags.html#" | append: tag[0] | relative_url }}" class="tag">{{ tag[0]}}</a>
                 {% endfor %}
             </section>
             {% endif %}
         </div>
 
         {% if site.search %}
+        
         <div class="search-card">
-            <input id="search_input" type="text" placeholder="Search..." autocomplete="off">
+            <input id="search_input" type="text" placeholder="搜索..." autocomplete="off">
             <i class="iconfont icon-search"></i>
             <div class="search_result"></div>
+            <!-- <ul id="search_result"></ul> -->
         </div>
+        <script src="{{"/assets/js/simple-jekyll-search.min.js" |  relative_url}}"  ></script>
+        <script>
+            var sjs = SimpleJekyllSearch({
+                searchInput: document.getElementById('search-input'),
+                resultsContainer: document.getElementsByClassName('search_result'),
+                json:'/search.json',
+                // searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>', // 文章列表模板
+                noResultsText: '没有搜索到文章', // 无搜索数据提示语
+                limit: 20, // 返回最大文章数
+                fuzzy: false // 是否模糊匹配
+            })
+            // console.log(sjs);
+            sjs.search()
+        </script>
+        <!-- <script src="{{"/dev/js/index.js" | relative_url}}"></script> -->
         {% endif %}
+        <!-- <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script> -->
 
     </aside>
 
 </main>
+        
 
 {% include footer.html %}
