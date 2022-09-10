@@ -195,6 +195,7 @@ $(document).ready(function () {
     }
 
     $.getJSON("../../search.json").done(function (data) {
+      console.log(date);
       var html = "";
       for (var i in data) {
         var item = data[i];
