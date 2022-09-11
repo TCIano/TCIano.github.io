@@ -101,7 +101,7 @@ description: 欢迎来到我的博客
         <!-- <script src="{{"/assets/js/simple-jekyll-search.min.js" | relative_url }}"></script> -->
         <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
         <script>
-            var sjs = SimpleJekyllSearch({
+            window.simpleJekyllSearch = SimpleJekyllSearch({
                 searchInput: document.getElementById('search-input'),
                 resultsContainer: document.querySelector('.search_result'),
                 json: "/search.json",
