@@ -160,80 +160,80 @@ $(document).ready(function () {
   /**
    * Search
    */
-  function Search() {
-    var self = this;
-    var input = $("#search_input");
-    var result = $(".search_result");
+  // function Search() {
+  //   var self = this;
+  //   var input = $("#search_input");
+  //   var result = $(".search_result");
 
-    input.focus(function () {
-      $(".icon-search").css("color", "#3199DB");
-      result.show();
-    });
+  //   input.focus(function () {
+  //     $(".icon-search").css("color", "#3199DB");
+  //     result.show();
+  //   });
 
-    input.keyup(debounce(this.autoComplete));
+  //   input.keyup(debounce(this.autoComplete));
 
-    $(document).click(function (e) {
-      if (
-        e.target.id === "search_input" ||
-        e.target.className === "search_result" ||
-        e.target.className === "search_item"
-      ) {
-        return;
-      }
-      $(".icon-search").css("color", "#CAD3DC");
-      result.hide();
-    });
-  }
+  //   $(document).click(function (e) {
+  //     if (
+  //       e.target.id === "search_input" ||
+  //       e.target.className === "search_result" ||
+  //       e.target.className === "search_item"
+  //     ) {
+  //       return;
+  //     }
+  //     $(".icon-search").css("color", "#CAD3DC");
+  //     result.hide();
+  //   });
+  // }
 
-  Search.prototype.autoComplete = function () {
-    var keywords = this.value.toLowerCase();
+  // Search.prototype.autoComplete = function () {
+  //   var keywords = this.value.toLowerCase();
 
-    if (keywords.length) {
-      $(".icon-search").css("color", "#3199DB");
-    } else {
-      $(".icon-search").css("color", "#CAD3DC");
-    }
+  //   if (keywords.length) {
+  //     $(".icon-search").css("color", "#3199DB");
+  //   } else {
+  //     $(".icon-search").css("color", "#CAD3DC");
+  //   }
 
-    $.getJSON("../../search.json").done(function (data) {
-      // console.log(date);
-      var html = "";
-      for (var i in data) {
-        var item = data[i];
-        var title = item.title;
-        var tags = item.tags;
-        var url = item.url;
-        var content = item.content;
-        var k = title + tags + content;
-        if (keywords !== "" && k.toLowerCase().indexOf(keywords) >= 0) {
-          html +=
-            '<a class="search_item" href="' +
-            item.url +
-            '">' +
-            item.content +
-            item.title +
-            "</a>";
-        }
-      }
-      $(".search_result").html(html);
-    });
-  };
+  //   $.getJSON("../../search.json").done(function (data) {
+  //     // console.log(date);
+  //     var html = "";
+  //     for (var i in data) {
+  //       var item = data[i];
+  //       var title = item.title;
+  //       var tags = item.tags;
+  //       var url = item.url;
+  //       var content = item.content;
+  //       var k = title + tags + content;
+  //       if (keywords !== "" && k.toLowerCase().indexOf(keywords) >= 0) {
+  //         html +=
+  //           '<a class="search_item" href="' +
+  //           item.url +
+  //           '">' +
+  //           item.content +
+  //           item.title +
+  //           "</a>";
+  //       }
+  //     }
+  //     $(".search_result").html(html);
+  //   });
+  // };
 
-  function debounce(fn, delay) {
-    var timer;
-    delay = delay || 120;
+  // function debounce(fn, delay) {
+  //   var timer;
+  //   delay = delay || 120;
 
-    return function () {
-      var ctx = this;
-      var args = arguments;
-      var later = function () {
-        fn.apply(ctx, args);
-      };
-      clearTimeout(timer);
-      timer = setTimeout(later, delay);
-    };
-  }
+  //   return function () {
+  //     var ctx = this;
+  //     var args = arguments;
+  //     var later = function () {
+  //       fn.apply(ctx, args);
+  //     };
+  //     clearTimeout(timer);
+  //     timer = setTimeout(later, delay);
+  //   };
+  // }
 
-  new Search();
+  // new Search();
 
   /**
    * Night mode
