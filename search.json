@@ -9,7 +9,7 @@ layout: null
       "url"      : "{{ post.url | relative_url }}",
       "date"     : "{{ post.date }}",
       "category" : "{{post.category}}",
-      "content"  : "{{ post.content | strip_html | strip_newlines }}"
+      "content"  : "{{ post.content }}"
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
