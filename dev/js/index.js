@@ -202,8 +202,8 @@ $(document).ready(function () {
         var title = item.title;
         var tags = item.tags;
         var url = item.url;
-        var content = item.content;
-        var k = title + tags + content;
+        // var content = item.content;
+        var k = title + tags;
         if (keywords !== "" && k.toLowerCase().indexOf(keywords) >= 0) {
           html +=
             '<a class="search_item" href="' +
