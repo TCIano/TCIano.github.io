@@ -92,16 +92,18 @@ description: 欢迎来到我的博客
         <div class="search-card">
             <input id="search_input" type="text" placeholder="搜索..." autocomplete="on">
             <i class="iconfont icon-search"></i>
-            <div class="search_result"></div>
+            <!-- <div class="search_result"></div> -->
+            <ul id="search_result"></ul>
         </div>
-        <script src="{{"/dev/js/index.js" | relative_url}}"></script>
+        <!-- <script src="{{"/dev/js/index.js" | relative_url}}"></script> -->
         {% endif %}
 
-        <!-- <script src="{{"/assets/js/simple-jekyll-search.min.js" |  relative_url}}"  ></script>
+        <script src="{{"/assets/js/simple-jekyll-search.min.js" |  relative_url}}"  ></script>
         <script>
             var sjs = SimpleJekyllSearch({
                 searchInput: document.getElementById('search-input'),
-                resultsContainer: document.getElementsByClassName('search_result'),
+                // resultsContainer: document.getElementsByClassName('search_result'),
+                resultsContainer: document.getElementById('search_result'),
                 json:'/search.json',
                 // searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>', // 文章列表模板
                 noResultsText: '没有搜索到文章', // 无搜索数据提示语
@@ -109,8 +111,8 @@ description: 欢迎来到我的博客
                 fuzzy: false // 是否模糊匹配
             })
             // console.log(sjs);
-            // sjs.search()
-        </script> -->
+            sjs.search()
+        </script>
         <!-- <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script> -->
 
     </aside>
