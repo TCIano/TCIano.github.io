@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2022-08-25-browser.md",
+                "file": "_posts/2022-12-9-日常常用方法.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-08-25-browser.md",
+                "file": "_posts/2022-12-9-日常常用方法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2022-08-25-browser.md",
+                "file": "_posts/2022-12-9-日常常用方法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2022-08-25-browser.md"
+                "file": "_posts/2022-12-9-日常常用方法.md"
               }
             }
           }
@@ -136,14 +136,13 @@
     "width": 300,
     "collapsed": true
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "a1cdbed01d7202c2",
+  "active": "c2328fff376b112f",
   "lastOpenFiles": [
+    "_posts/2020-07-15-CSS.md",
+    "README.md",
+    "_posts/2022-08-25-browser.md",
     "assets/photos/钟.jpg",
     "_posts/2022-9-16-littleProcess.md",
-    "_posts/2021-03-01-JS.md",
-    "_posts/2020-07-15-CSS.md"
+    "_posts/2021-03-01-JS.md"
   ]
 }
