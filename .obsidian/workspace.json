@@ -4,40 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "db3e911e96620997",
+        "id": "db45d7c8b62eac53",
         "type": "tabs",
         "children": [
           {
-            "id": "d6353fad999a5bca",
+            "id": "60a6529882c29492",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/2022-12-9-日常常用方法及业务事件.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "ed83a9e7ddd5c268"
-          }
-        ]
-      },
-      {
-        "id": "53cda3910601e6ff",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e67747a2edd9ba59",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/2022-12-9-日常常用方法及业务事件.md",
-                "mode": "preview",
-                "source": false
-              }
-            },
-            "group": "ed83a9e7ddd5c268"
+              "type": "empty",
+              "state": {}
+            }
           }
         ]
       }
@@ -84,12 +60,20 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "ca3d6a8184237492",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "ddfb8b8ff2fe17f6",
@@ -105,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-12-9-日常常用方法及业务事件.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2022-12-9-日常常用方法及业务事件.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,24 +120,75 @@
                 "useHierarchy": true
               }
             }
+          },
+          {
+            "id": "28a9c1efe97271c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "0e308ef914011603",
+            "type": "leaf",
+            "state": {
+              "type": "side-panel-control-view",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 200,
     "collapsed": true
   },
-  "active": "05e9110810a81d2b",
+  "left-ribbon": {
+    "hiddenItems": {
+      "canvas:新建白板": false,
+      "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false,
+      "big-calendar:Big Calendar": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-memos:Memos": false
+    }
+  },
+  "active": "60a6529882c29492",
   "lastOpenFiles": [
-    "assets/photos/日常2.jpg",
-    "_posts/2022-12-9-日常常用方法及业务事件.md",
     "_posts/2020-07-15-CSS.md",
-    "README.md",
-    "_posts/2022-08-25-browser.md",
-    "assets/photos/钟.jpg",
-    "_posts/2022-9-16-littleProcess.md",
-    "_posts/2021-03-01-JS.md"
+    "_posts/未命名.md",
+    "TCIano.github.io/_posts/viteAdmin/vite.svg",
+    "TCIano.github.io/_posts/viteAdmin/index.html",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-fd7ee217.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-d0632451.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-cecad240.css",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-c20dc8ca.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-a807237b.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-80616e09.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-792698a1.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-1c90bb87.js",
+    "TCIano.github.io/_posts/viteAdmin/assets/index-0b0883d9.js",
+    "日记/2023-03-21.md",
+    "日记/2023-03-29.md",
+    "日记/2023-03-01.md",
+    "TCIano.github.io/assets/img/profile1.png",
+    "TCIano.github.io/assets/img/profile.png",
+    "TCIano.github.io/assets/img/hero.jpg",
+    "TCIano.github.io/assets/img/浏览器渲染原理.jpg",
+    "TCIano.github.io/assets/img/导入cdn.png",
+    "日记/2023-03-20.md",
+    "TCIano.github.io/_posts/2020-07-15-CSS.md",
+    "TCIano.github.io/_posts/2020-09-11-componentCommunication.md",
+    "TCIano.github.io/_posts/2020-10-20-vue.md",
+    "TCIano.github.io/_posts/2021-03-01-JS.md",
+    "TCIano.github.io/_posts/2021-05-23-Router.md",
+    "TCIano.github.io/_posts/2022-01-29-VUESource.md",
+    "TCIano.github.io/_posts/2022-05-19-diff.md",
+    "TCIano.github.io/_posts/2022-08-20-diff.md",
+    "TCIano.github.io/_posts/2022-08-25-browser.md"
   ]
 }

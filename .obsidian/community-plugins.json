@@ -1,5 +1,9 @@
 [
-  "obsidian-git",
   "obsidian-markdown-formatting-assistant-plugin",
-  "highlightr-plugin"
+  "highlightr-plugin",
+  "obsidian-tasks-plugin",
+  "big-calendar",
+  "obsidian-memos",
+  "calendar",
+  "obsidian-git"
 ]
