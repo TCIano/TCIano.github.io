@@ -12,22 +12,36 @@ url: '' # your host
 # 例如，当你的域名是 "kaeyleo.github.io"  时，这个 url 需要留空
 # but if your created a repo named "myblog", and the site is "kaeyleo.github.io/myblog", change baseurl to '/myblog'
 # 但是，如果你创建了一个叫 "myblog" 的网站，此时网址会变成 "kaeyleo.github.io/myblog" ，这时再将 baseurl 设置为 '/myblog'
-baseurl: ''
+baseurl: '/viteAdmin'
 # locale: en_US.utf8
 
 # Navigation links
 nav:
-  首页: '/'
-  标签: '/tags.html'
-  影集: '/photos.html'
+   首页: '/'
+   标签: '/tags.html'
+   影集: '/photos.html'
 
 # 照片名字
-photos: ['江南','灵隐寺','绿','日常','日落','日常2','上海','水乡','外滩','云','云台山','云台山2','钟']
-
+photos:
+   [
+      '江南',
+      '灵隐寺',
+      '绿',
+      '日常',
+      '日落',
+      '日常2',
+      '上海',
+      '水乡',
+      '外滩',
+      '云',
+      '云台山',
+      '云台山2',
+      '钟',
+   ]
 
 # Footer
 footer:
-  since: 2017
+   since: 2017
 
 # Author 配置博主信息
 author: '北海萧萧'
@@ -43,20 +57,20 @@ nightMode: true
 
 # Comments 评论功能
 comments:
-  disqus: true
-  shortname: tciano
-  disqus_url: 'https://tciano.disqus.com/embed.js'
+   disqus: true
+   shortname: tciano
+   disqus_url: 'https://tciano.disqus.com/embed.js'
 
-  # gitalk: true
-  # gitalk_clientID: 'd5007cc3d69758451e25'
-  # gitalk_Secret: 'd2599455e124cff5148dadf21ff8b8c65a7653ad'
-  # gitalk_repo: 'TCIano/Blog_gittalk'
-  # gitalk_owner: 'TCIano'
-  # gitalk_admin: 'TCIano'
-  # distractionFreeMode: true
+   # gitalk: true
+   # gitalk_clientID: 'd5007cc3d69758451e25'
+   # gitalk_Secret: 'd2599455e124cff5148dadf21ff8b8c65a7653ad'
+   # gitalk_repo: 'TCIano/Blog_gittalk'
+   # gitalk_owner: 'TCIano'
+   # gitalk_admin: 'TCIano'
+   # distractionFreeMode: true
 
 #百度统计
-baidu-analyisis: 'ce30de2f3c2b222a1488070b9df602f8'  
+baidu-analyisis: 'ce30de2f3c2b222a1488070b9df602f8'
 
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
@@ -66,20 +80,19 @@ social-share: true
 social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
 
 # theme color 主题皮肤
-theme-color: 'default'  # pink or default
+theme-color: 'default' # pink or default
 
 # Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
 # postPatterns: 'circuitBoard'
 postPatterns: food
 
-
 # SNS settings 配置社交网站
 # url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
-  weibo: '//weibo.com/u/6321994003'
-  # juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  # instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/TCIano'
+   weibo: '//weibo.com/u/6321994003'
+   # juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
+   # instagram: '//www.instagram.com/steveliaocn'
+   github: '//github.com/TCIano'
 
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar
@@ -94,7 +107,7 @@ exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'R
 markdown: kramdown
 highlighter: rouge
 kramdown:
-  input: GFM
+   input: GFM
 
 # RSS
 RSS: false
