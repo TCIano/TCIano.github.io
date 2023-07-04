@@ -8,12 +8,36 @@
         "type": "tabs",
         "children": [
           {
-            "id": "60a6529882c29492",
+            "id": "6ad11e0934338192",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2023-7-4 vue3.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "961f4fb16e15f7f6"
+          }
+        ]
+      },
+      {
+        "id": "8aa289655f1de623",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "10ee75c7686da1a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2023-7-4 vue3.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "961f4fb16e15f7f6"
           }
         ]
       }
@@ -68,6 +92,14 @@
               "type": "calendar",
               "state": {}
             }
+          },
+          {
+            "id": "6329119b6eba8116",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -89,6 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "_posts/2023-7-4 vue3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +138,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "_posts/2023-7-4 vue3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,18 +160,21 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "_posts/2023-7-4 vue3.md"
+              }
             }
           },
           {
-            "id": "0e308ef914011603",
+            "id": "44a500738f39d890",
             "type": "leaf",
             "state": {
               "type": "side-panel-control-view",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -157,21 +194,38 @@
       "obsidian-memos:Memos": false
     }
   },
-  "active": "60a6529882c29492",
+  "active": "6ad11e0934338192",
   "lastOpenFiles": [
+    "_posts/2023-5-6 antd-vue3问题汇总.md",
+    "_posts/2023-7-4 vue3.md",
+    "未命名 1.canvas",
+    "_posts/viteAdmin/vite.svg",
+    "_posts/viteAdmin/index.html",
+    "_posts/viteAdmin/assets/index-fd7ee217.js",
+    "_posts/viteAdmin/assets/index-d0632451.js",
+    "_posts/viteAdmin/assets/index-cecad240.css",
+    "_posts/viteAdmin/assets/index-c20dc8ca.js",
+    "_posts/viteAdmin/assets/index-a807237b.js",
+    "_posts/viteAdmin/assets/index-80616e09.js",
+    "_posts/viteAdmin/assets/index-792698a1.js",
+    "_posts/viteAdmin/assets/index-0b0883d9.js",
+    "_posts/viteAdmin/assets/index-0af01ebd.js",
+    "viteAdmin/vite.svg",
+    "_posts/2023-5-5-echarts 定制化问题汇总.md",
+    "未命名.canvas",
+    "Pasted image 20230410101248.png",
+    "_posts/2022-12-9-日常常用方法及业务事件.md",
+    "_posts/2022-8-25-WebPack.md",
+    "_posts/2022-08-30-computedNetWork.md",
+    "_posts/2022-09-14-performanceOptimization.md",
+    "_posts/2022-9-16-littleProcess.md",
+    "_posts/2022-10-26-BPMNJS.md",
+    "_posts/2021-03-01-JS.md",
+    "_posts/2021-05-23-Router.md",
+    "_posts/2020-10-20-vue.md",
+    "_posts/2020-09-11-componentCommunication.md",
     "_posts/2020-07-15-CSS.md",
-    "_posts/未命名.md",
     "TCIano.github.io/_posts/viteAdmin/vite.svg",
-    "TCIano.github.io/_posts/viteAdmin/index.html",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-fd7ee217.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-d0632451.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-cecad240.css",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-c20dc8ca.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-a807237b.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-80616e09.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-792698a1.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-1c90bb87.js",
-    "TCIano.github.io/_posts/viteAdmin/assets/index-0b0883d9.js",
     "日记/2023-03-21.md",
     "日记/2023-03-29.md",
     "日记/2023-03-01.md",
@@ -187,8 +241,6 @@
     "TCIano.github.io/_posts/2021-03-01-JS.md",
     "TCIano.github.io/_posts/2021-05-23-Router.md",
     "TCIano.github.io/_posts/2022-01-29-VUESource.md",
-    "TCIano.github.io/_posts/2022-05-19-diff.md",
-    "TCIano.github.io/_posts/2022-08-20-diff.md",
-    "TCIano.github.io/_posts/2022-08-25-browser.md"
+    "TCIano.github.io/_posts/2022-05-19-diff.md"
   ]
 }

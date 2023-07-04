@@ -5,5 +5,8 @@
   "big-calendar",
   "obsidian-memos",
   "calendar",
-  "obsidian-git"
+  "obsidian-git",
+  "chatgpt-md",
+  "markdown-prettifier",
+  "obsidian-linter"
 ]

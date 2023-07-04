@@ -17,7 +17,7 @@
     {
       "name": "textEdit",
       "active": true,
-      "visible": true
+      "visible": false
     },
     {
       "name": "tables",
@@ -37,7 +37,7 @@
     {
       "name": "greekLetters",
       "active": true,
-      "visible": true
+      "visible": false
     },
     {
       "name": "colors",

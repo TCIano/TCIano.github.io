@@ -1,1 +1,0 @@
-import{d as r,_ as s}from"./index-80616e09.js";const c=r({beforeRouteEnter(o,e,t){console.log(o,e),t(n=>{n.$router.replace(e.path)})}});function a(o,e,t,n,p,_){return null}const f=s(c,[["render",a]]);export{f as default};

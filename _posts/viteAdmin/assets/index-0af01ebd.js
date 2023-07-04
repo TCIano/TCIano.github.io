@@ -1,1 +1,0 @@
-import{d as t,e as o,o as s,c as a,f as c,F as n,a as e}from"./index-80616e09.js";const r=e("div",{style:{height:"500px",width:"100px","background-color":"skyblue"}},"two",-1),d=e("div",{style:{height:"500px",width:"100px","background-color":"skyblue"}},"two",-1),u=t({__name:"index",setup(i){return o(()=>{}),(l,_)=>(s(),a(n,null,[c(" testsub1 "),r,d],64))}});export{u as default};
