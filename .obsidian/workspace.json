@@ -4,25 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "db45d7c8b62eac53",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "6ad11e0934338192",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/2023-7-4 vue3.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "961f4fb16e15f7f6"
-          }
-        ]
-      },
-      {
         "id": "8aa289655f1de623",
         "type": "tabs",
         "children": [
@@ -32,12 +13,31 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2023-7-4 vue3.md",
+                "file": "_posts/2023-7-4 vue3+ts.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "961f4fb16e15f7f6"
+            "group": "3a40b6a04174d71d"
+          }
+        ]
+      },
+      {
+        "id": "765e73ef76914b49",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4440906aef1c275a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2023-7-4 vue3+ts.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "3a40b6a04174d71d"
           }
         ]
       }
@@ -105,7 +105,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 216.5
   },
   "right": {
     "id": "ddfb8b8ff2fe17f6",
@@ -121,7 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2023-7-4 vue3.md",
+                "file": "_posts/2023-7-4 vue3+ts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +138,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2023-7-4 vue3.md",
+                "file": "_posts/2023-7-4 vue3+ts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,20 +161,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2023-7-4 vue3.md"
+                "file": "_posts/2023-7-4 vue3+ts.md"
               }
-            }
-          },
-          {
-            "id": "44a500738f39d890",
-            "type": "leaf",
-            "state": {
-              "type": "side-panel-control-view",
-              "state": {}
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -194,14 +186,18 @@
       "obsidian-memos:Memos": false
     }
   },
-  "active": "6ad11e0934338192",
+  "active": "10ee75c7686da1a6",
   "lastOpenFiles": [
+    "_posts/2022-12-09-Commondailymethods.md",
+    "_posts/2022-10-26-BPMNJS.md",
+    "_posts/2023-7-4 vue3+ts.md",
+    "_posts/2023-05-06-antd-vue3问题汇总.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "Pasted image 20230410101248.png",
     "_posts/2022-12-09-Common daily methods.md",
     "_posts/2023-5-6 antd-vue3问题汇总.md",
-    "_posts/2023-05-06-antd-vue3问题汇总.md",
     "_posts/2022-12-9-Common daily methods.md",
-    "_posts/2023-7-4 vue3.md",
-    "未命名 1.canvas",
     "_posts/viteAdmin/vite.svg",
     "_posts/viteAdmin/index.html",
     "_posts/viteAdmin/assets/index-fd7ee217.js",
@@ -215,14 +211,11 @@
     "_posts/viteAdmin/assets/index-0af01ebd.js",
     "viteAdmin/vite.svg",
     "_posts/2023-5-5-echarts 定制化问题汇总.md",
-    "未命名.canvas",
-    "Pasted image 20230410101248.png",
     "_posts/2022-12-9-日常常用方法及业务事件.md",
     "_posts/2022-8-25-WebPack.md",
     "_posts/2022-08-30-computedNetWork.md",
     "_posts/2022-09-14-performanceOptimization.md",
     "_posts/2022-9-16-littleProcess.md",
-    "_posts/2022-10-26-BPMNJS.md",
     "_posts/2021-03-01-JS.md",
     "_posts/2021-05-23-Router.md",
     "_posts/2020-10-20-vue.md",
@@ -240,8 +233,6 @@
     "日记/2023-03-20.md",
     "TCIano.github.io/_posts/2020-07-15-CSS.md",
     "TCIano.github.io/_posts/2020-09-11-componentCommunication.md",
-    "TCIano.github.io/_posts/2020-10-20-vue.md",
-    "TCIano.github.io/_posts/2021-03-01-JS.md",
-    "TCIano.github.io/_posts/2021-05-23-Router.md"
+    "TCIano.github.io/_posts/2020-10-20-vue.md"
   ]
 }
