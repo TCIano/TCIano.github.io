@@ -50,3 +50,15 @@ document.addEventListener('visibilitychange', e => {
    }
 })
 ```
+
+### js中 call、apply、bind
+
+> call、apply 的区别
+
+1. call
+	+ 第一个参数：指定了函数内部的`this`指向
+	+ 第二个参数：带下标的集合（数组 / 类数组），会把集合中的元素传递给被调用的函数
+2. apply
+	+ 第一个参数：指定了函数内部的`this`指向
+	+ 第二个参数：依次传入的参数，每个参数会被依次传递给调用的函数
+3. 当传入的第一个参数是`null` ,该函数的`this`会指向 `window`

@@ -11,14 +11,11 @@
             "id": "10ee75c7686da1a6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "_posts/2022-12-09-Commondailymethods.md",
-                "mode": "source",
-                "source": false
+                "file": "Pasted image 20230410101248.png"
               }
-            },
-            "group": "3a40b6a04174d71d"
+            }
           }
         ]
       },
@@ -27,17 +24,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4440906aef1c275a",
+            "id": "368aa6084ffc6a98",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "_posts/2022-12-09-Commondailymethods.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名 2.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               }
-            },
-            "group": "3a40b6a04174d71d"
+            }
           }
         ]
       }
@@ -105,7 +104,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 216.5
+    "width": 266.5
   },
   "right": {
     "id": "ddfb8b8ff2fe17f6",
@@ -121,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-12-09-Commondailymethods.md",
+                "file": "Pasted image 20230410101248.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2022-12-09-Commondailymethods.md",
+                "file": "Pasted image 20230410101248.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2022-12-09-Commondailymethods.md"
+                "file": "Pasted image 20230410101248.png"
               }
             }
           }
@@ -183,13 +182,25 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-memos:Memos": false
+      "obsidian-memos:Memos": false,
+      "obsidian-map-view:Open map view": false
     }
   },
   "active": "10ee75c7686da1a6",
   "lastOpenFiles": [
-    "_posts/2023-7-4 vue3+ts.md",
+    "Location added on 2023-09-26T10-30.md",
+    "Pasted image 20230410101248.png",
+    "_posts/2023-08-24-shell.md",
+    "未命名 2.canvas",
+    "_posts/2020-10-20-vue.md",
+    "_posts/2023-05-06-antd-vue3问题汇总.md",
     "_posts/2023-07-04-vue3+ts.md",
+    "_posts/2021-03-01-JS.md",
+    "assets/img/导入cdn.png",
+    "assets/img/浏览器渲染原理.jpg",
+    "_posts/2020-07-15-CSS.md",
+    "_posts/2022-12-09-Commondailymethods.md",
+    "_posts/2023-7-4 vue3+ts.md",
     "assets/photos/西溪.jpg",
     "assets/photos/b790afca1f9b0c99ee377b932131bcc.jpg",
     "assets/photos/花海.jpg",
@@ -197,17 +208,12 @@
     "assets/photos/樱花.jpg",
     "assets/photos/946e3ad884c04843ca1c5378fc96845.jpg",
     "assets/photos/和平鸽.jpg",
-    "assets/photos/07c2100faf5c71e1f40921f2d81a22c.jpg",
-    "_posts/2022-12-09-Commondailymethods.md",
     "_posts/2022-10-26-BPMNJS.md",
-    "_posts/2023-05-06-antd-vue3问题汇总.md",
     "未命名 1.canvas",
     "未命名.canvas",
-    "Pasted image 20230410101248.png",
     "_posts/2022-12-09-Common daily methods.md",
     "_posts/2023-5-6 antd-vue3问题汇总.md",
     "_posts/2022-12-9-Common daily methods.md",
-    "_posts/viteAdmin/vite.svg",
     "_posts/viteAdmin/index.html",
     "_posts/viteAdmin/assets/index-fd7ee217.js",
     "_posts/viteAdmin/assets/index-d0632451.js",
@@ -224,17 +230,11 @@
     "_posts/2022-08-30-computedNetWork.md",
     "_posts/2022-09-14-performanceOptimization.md",
     "_posts/2022-9-16-littleProcess.md",
-    "_posts/2021-03-01-JS.md",
     "_posts/2021-05-23-Router.md",
-    "_posts/2020-10-20-vue.md",
     "_posts/2020-09-11-componentCommunication.md",
-    "_posts/2020-07-15-CSS.md",
     "日记/2023-03-21.md",
     "日记/2023-03-29.md",
     "日记/2023-03-01.md",
-    "日记/2023-03-20.md",
-    "TCIano.github.io/_posts/2020-07-15-CSS.md",
-    "TCIano.github.io/_posts/2020-09-11-componentCommunication.md",
-    "TCIano.github.io/_posts/2020-10-20-vue.md"
+    "日记/2023-03-20.md"
   ]
 }
